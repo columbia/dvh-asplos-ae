@@ -6,12 +6,17 @@ Artifacts Evaluation for ASPLOS 2020
 * Two physical machines connected via private network for stable and precise measurements
 
 ## Compliation
-* (TODO) PV, PT, DVH-VP, DVH configuration
-* Command to compile kernel
+### Kernel configuration
 ```
-make -j 40 LOCALVERSION=$LV $BZ_IMAGE && $MOD_INSTALL && sudo make install
+# make dvh_x86_defconfig
 ```
-or just run and set local version and choose whether to compile modules or not
+
+### Kernel compile
+```
+# LV=<put-your-local-version-as-you-like>
+# make -j LOCALVERSION=$LV && make modules_install && make install
+```
+or just run the script below in the kernel source directory
 ```
 # build-n-install.sh
 LOCALVERSION?[dvh-L0]:
