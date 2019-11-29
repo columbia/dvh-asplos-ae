@@ -28,3 +28,27 @@ or just run
 # copy-kernel.sh
 Target machine IP?
 ```
+
+## Update Kernel
+* Set kernel parameters
+  * For PV, PT, DVH-VP, and DVH
+    * For L0 to L3
+  
+* Reboot
+
+## Run Virtual machines
+TODO: Update env/vm_api_example.py. Remove Small mem option. Maybe have one option for DVH
+Select options
+```
+# ./vm_api_example.py
+1. [True] SMP
+2. [False] SmallMemory
+3. [2] Virtualization Level
+4. [pv] I/O virtualization model (pv, pt, or vp)
+6. [n] Virtual timer
+7. [n] Virtual ipi
+8. [n] Virtual idle
+9. [n] FS_BASE fix
+10. [False] Migration
+Enter number to update configuration. Enter 0 to finish:
+```
