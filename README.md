@@ -36,7 +36,9 @@ Target machine IP?
   
 * Reboot
 
-## Run Virtual machines
+## Server Setup
+### QEMU Install (TODO)
+### Run Virtual machines
 TODO: Update env/vm_api_example.py. Remove Small mem option. Maybe have one option for DVH
 Select options
 ```
@@ -52,3 +54,13 @@ Select options
 10. [False] Migration
 Enter number to update configuration. Enter 0 to finish:
 ```
+
+## Client Setup
+(TODO) Make this repo only have scripts
+(TODO) Make another repo for Linux, QEMU and add them as submodules
+(TODO) Update only necessary submodules since Linux is a large code base, something like this
+```
+git submodule update --init submoduleName
+```
+
+## Run Experiments
