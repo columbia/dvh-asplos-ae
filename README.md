@@ -8,8 +8,8 @@ Artifacts Evaluation for ASPLOS 2020
 ## Preparation
 Run this command to copy helper scripts to a local directory in $PATH, which is set to /usr/local/bin in the script.
 ```
-cd scripts
-./install_scripts.sh
+# cd scripts
+# ./install_scripts.sh
 ```
 
 ## Compliation
