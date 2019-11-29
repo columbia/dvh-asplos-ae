@@ -15,12 +15,12 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 ## Kernel compliation
 ### Branch information
 
-| Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH |
-| -------------              |------------| --------|
-| L0                         | v4.18-base | TBD |
-| L1                         | v4.18-base | TBD |
-| L2                         | v4.18-base | TBD |
-| L3                         | v4.18-base | TBD |
+| Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
+| -------------              |------------| ----------------| --------------- |
+| L0                         | v4.18-base | v4.18-DVH-L0    | v4.18-DVH-L0    |
+| L1                         | v4.18-base | v4.18-DVH-basic | v4.18-DVH-full  |
+| L2                         | v4.18-base | v4.18-base      | v4.18-DVH-basic |
+| L3                         | v4.18-base | -               | v4.18-base      |
 
 ```
 # cd linux
