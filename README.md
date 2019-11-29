@@ -11,13 +11,20 @@ Artifacts Evaluation for ASPLOS 2020
 ```
 make -j 40 LOCALVERSION=$LV $BZ_IMAGE && $MOD_INSTALL && sudo make install
 ```
-* Command to copy kernel to the host and VMs
-```
-rsync -av /boot/*$KERNEL_VER root@$TARGET_IP:/boot/.
-```
 or just run and set local version and choose whether to compile modules or not
 ```
 # build-n-install.sh
 LOCALVERSION?[dvh-L0]:
 make modules_instsall?[y/N]:
+```
+
+## Install Kernel
+* Command to copy kernel to the host and VMs
+```
+rsync -av /boot/*$KERNEL_VER root@$TARGET_IP:/boot/.
+```
+or just run
+```
+# copy-kernel.sh
+Target machine IP?
 ```
