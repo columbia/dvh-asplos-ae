@@ -22,6 +22,7 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 | L2                         | v4.18-base | v4.18-base      | v4.18-DVH-basic |
 | L3                         | v4.18-base | -               | v4.18-base      |
 
+Pick the branch name from the table above, and run this command to switch to the branch
 ```
 # cd linux
 # git checkout <branch-name>
@@ -33,11 +34,7 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 ```
 
 ### Kernel compile
-```
-# LV=<put-your-local-version-as-you-like>
-# make -j LOCALVERSION=$LV && make modules_install && make install
-```
-or just run the script below in the kernel source directory
+Run this script to compile and install kernel.
 ```
 # build-n-install.sh
 LOCALVERSION?[dvh-L0]:
