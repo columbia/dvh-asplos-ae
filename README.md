@@ -6,7 +6,7 @@ Artifacts Evaluation for ASPLOS 2020
 * Two physical machines connected via private network for stable and precise measurements
 
 ## Preparation
-Copy helper scripts to a local directory in $PATH. Running this script will copy the helper scripts to /usr/local/bin
+Run this command to copy helper scripts to a local directory in $PATH, which is set to /usr/local/bin in the script.
 ```
 cd scripts
 ./install_scripts.sh
