@@ -5,14 +5,28 @@ Artifacts Evaluation for ASPLOS 2020
 * Virtual machine image file. (Download here(TODO))
 * Two physical machines connected via private network for stable and precise measurements
 
-## Preparation
+## Basic preparation
 Run this command to copy helper scripts to a local directory in $PATH, which is set to /usr/local/bin in the script.
 ```
 # cd scripts
 # ./install_scripts.sh
 ```
 
-## Compliation
+## Kernel compliation
+### Branch information
+
+| Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH |
+| -------------              |------------| --------|
+| L0                         | v4.18-base | TBD |
+| L1                         | v4.18-base | TBD |
+| L2                         | v4.18-base | TBD |
+| L3                         | v4.18-base | TBD |
+
+```
+# cd linux
+# git checkout <branch-name>
+```
+
 ### Kernel configuration
 ```
 # make dvh_x86_defconfig
