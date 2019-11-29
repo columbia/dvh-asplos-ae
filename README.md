@@ -18,6 +18,8 @@ LOCALVERSION?[dvh-L0]:
 make modules_instsall?[y/N]:
 ```
 
+* Command to compile QEMU
+
 ## Install Kernel
 * Command to copy kernel to the host and VMs
 ```
@@ -64,3 +66,17 @@ git submodule update --init submoduleName
 ```
 
 ## Run Experiments
+(TODO) move run_all.sh from kvmperf/cmdline_tests
+```
+# ./run_all.sh
+(TODO) Display options
+```
+
+## Collect Results
+This script prints out the experimental results.
+```
+# ./results.py
+```
+
+
+
