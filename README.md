@@ -22,7 +22,7 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 | L2                         | v4.18-base | v4.18-base      | v4.18-DVH-basic |
 | L3                         | v4.18-base | -               | v4.18-base      |
 
-Pick the branch name from the table above, and run this command to switch to the branch
+Pick a branch name from the table above, and run this command to switch to the branch
 ```
 # cd linux
 # git checkout <branch-name>
@@ -46,7 +46,7 @@ make modules_instsall?[y/N]:
 ## Install Kernel
 * Command to copy kernel to the host and VMs
 ```
-rsync -av /boot/*$KERNEL_VER root@$TARGET_IP:/boot/.
+
 ```
 or just run
 ```
