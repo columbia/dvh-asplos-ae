@@ -62,11 +62,11 @@ Target machine IP?
 ```
 
 ### Kernel parameter setup
-Depending on I/O virtualization, update GRUB_CMDLINE_LINUX in `/etc/default/grub` file. By default, it would look like this
+Depending on I/O virtualization, update the line starting GRUB_CMDLINE_LINUX in `/etc/default/grub` file. By default, it would look like this
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
-Append proper options from the table below.
+Append proper options to the line from the table below.
 
 | Virtualization Level       | Baseline for L2 | Baseline for L3 |
 | -------------              |---------------- | --------------- |
