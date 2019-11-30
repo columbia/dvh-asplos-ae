@@ -46,7 +46,7 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 
 ### Kernel compile
-Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format: 4.18.0-<branch name after v4.18>, e.g. 4.18.0-base.
+Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format: 4.18.0-`branch name after v4.18-`, e.g. 4.18.0-base.
 ```
 # build-n-install.sh
 LOCALVERSION?[base]:
