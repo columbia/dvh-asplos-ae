@@ -1,6 +1,8 @@
 # Optimizing Nested Virtualization Performance Using Direct Virtual Hardware
 Artifacts Evaluation for ASPLOS 2020
 
+(TODO) Table of contents.
+
 ## Prerequisites
 * Virtual machine image file. (Download here(TODO))
 * Two physical machines connected via private network for stable and precise measurements
@@ -44,14 +46,13 @@ make modules_instsall?[y/N]:
 
 
 ### Kernel install
-* Command to copy kernel to the host and VMs
-```
 
-```
-or just run
 ```
 # copy-kernel.sh
 Target machine IP?
+128.105.144.129
+success
+Kernel version[4.18.0]:
 ```
 
 ### Update Kernel
