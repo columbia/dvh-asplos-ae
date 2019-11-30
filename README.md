@@ -20,10 +20,11 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 ```
 
 ## Kernel Setup
-Run all commands under `./linux` directory. 
 Download Linux source through git submodule command once.
+Run all commands in this Kernel Setup section under `./linux` directory after Linux source is downloaded.
 ```
 # git submodule update --init linux
+# cd linux
 ```
 
 ### Branch information
