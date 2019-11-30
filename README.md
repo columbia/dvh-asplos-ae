@@ -64,7 +64,7 @@ Target machine IP?
 
 ### Kernel parameter setup
 
-Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters.
+Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters. This will be done by updating `/etc/default/grub` file.
 
 Change `GRUB_DEFAULT` to point the copied kernel. This is an example of 4.18.0-base kernel.
 ```
@@ -94,6 +94,12 @@ Once you updated the `grub` file, do the followings to make the change effective
 ```
 # update-grub
 # reboot
+```
+
+Ensure that the kernel version and core numbers are changed correctly with the following commands.
+```
+# uname -r
+# lscpu
 ```
 
 ## QEMU Setup
