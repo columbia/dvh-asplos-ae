@@ -12,7 +12,7 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 # ./install_scripts.sh
 ```
 
-## Kernel compliation
+## Kernel Setup
 ### Branch information
 
 | Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
@@ -37,13 +37,13 @@ Pick a branch name from the table above, and run this command to switch to the b
 Run this script to compile and install kernel.
 ```
 # build-n-install.sh
-LOCALVERSION?[dvh-L0]:
+LOCALVERSION?[base]:
 make modules_instsall?[y/N]:
 ```
 
-* Command to compile QEMU
 
-## Install Kernel
+
+### Kernel install
 * Command to copy kernel to the host and VMs
 ```
 
@@ -54,12 +54,14 @@ or just run
 Target machine IP?
 ```
 
-## Update Kernel
+### Update Kernel
 * Set kernel parameters
   * For PV, PT, DVH-VP, and DVH
     * For L0 to L3
   
 * Reboot
+
+## QEMU Setup
 
 ## Server Setup
 ### QEMU Install (TODO)
