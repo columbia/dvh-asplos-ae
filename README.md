@@ -63,6 +63,20 @@ Kernel version[4.18.0]:
 * Reboot
 
 ## QEMU Setup
+### QEMU branches (TBD for L1~L3)
+| Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
+| -------------              |------------ | ----------------| --------------- |
+| L0                         | v3.1.0-base | v3.1.0-dvh-L0    | v3.1.0-dvh-L0    |
+
+Pick a branch name from the table above, and run this command to switch to the branch
+```
+# cd qemu
+# git checkout <branch-name>
+```
+### Configure and compile
+```
+./configure --target-list=x86_64-softmmu && make clean && make -j
+```
 
 ## Server Setup
 ### QEMU Install (TODO)
