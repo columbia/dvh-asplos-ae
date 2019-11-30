@@ -8,6 +8,11 @@ Artifacts Evaluation for ASPLOS 2020
 * Two physical machines connected via private network for stable and precise measurements (Update for migration as well)
 
 ## Basic preparation
+Clone this repository. Note that all the commands other than this git clone command need to be executed in the directory this repo is cloned.
+```
+# git clone https://github.com/columbia/dvh-asplos-ae.git
+```
+
 Run this command to copy helper scripts to a local directory in $PATH, which is set to /usr/local/bin in the script.
 ```
 # cd scripts
@@ -68,6 +73,8 @@ Kernel version[4.18.0]:
 * Reboot
 
 ## QEMU Setup
+This needs to be done on bare-metal machine and virtual machines, not on a separate machine.
+
 ### QEMU branches (TBD for L1~L3)
 | Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
 | -------------              |------------ | ----------------| --------------- |
