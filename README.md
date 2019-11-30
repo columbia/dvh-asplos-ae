@@ -46,7 +46,7 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 
 ### Kernel compile
-Run this script to compile and install kernel.
+Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format: 4.18.0-<branch name after v4.18>, e.g. 4.18.0-base.
 ```
 # build-n-install.sh
 LOCALVERSION?[base]:
@@ -62,6 +62,15 @@ Target machine IP?
 ```
 
 ### Kernel parameter setup
+
+Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters.
+
+Change `GRUB_DEFAULT` to point the copied kernel. This is an example of 4.18.0-base kernel.
+```
+K_VER=4.18.0-base
+GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux $K_VER"
+```
+
 Depending on I/O virtualization, update the line starting GRUB_CMDLINE_LINUX in `/etc/default/grub` file. By default, it would look like this
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
@@ -75,12 +84,16 @@ Append proper options to the line from the table below.
 | L2                         | - | - |
 | L3                         | - | - |
 
+For example, the line would look like this for L0 kernel for L3 measurements
+```
+GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1
+```
 
-* Set kernel parameters
-  * For PV, PT, DVH-VP, and DVH
-    * For L0 to L3
-  
-* Reboot
+Once you updated the `grub` file, do the followings to make the change effective.
+```
+# update-grub
+# reboot
+```
 
 ## QEMU Setup
 This needs to be done on bare-metal machine and virtual machines, not on a separate machine.
@@ -105,8 +118,9 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 
 ## Server Setup
-### QEMU Install (TODO)
+
 ### Run Virtual machines
+TODO: set qemu path, pin_vcpus, 
 TODO: Update env/vm_api_example.py. Remove Small mem option. Maybe have one option for DVH
 Select options
 ```
