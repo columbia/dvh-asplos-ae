@@ -5,7 +5,7 @@ Artifacts Evaluation for ASPLOS 2020
 
 ## Prerequisites
 * Virtual machine image file. (Download here(TODO))
-* Two physical machines connected via private network for stable and precise measurements
+* Two physical machines connected via private network for stable and precise measurements (Update for migration as well)
 
 ## Basic preparation
 Run this command to copy helper scripts to a local directory in $PATH, which is set to /usr/local/bin in the script.
