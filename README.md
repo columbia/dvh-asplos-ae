@@ -20,6 +20,12 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 ```
 
 ## Kernel Setup
+Run all commands under `./linux` directory. 
+Download Linux source through git submodule command once.
+```
+# git submodule update --init linux
+```
+
 ### Branch information
 
 | Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
@@ -29,14 +35,8 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 | L2                         | v4.18-base | v4.18-base      | v4.18-DVH-basic |
 | L3                         | v4.18-base | -               | v4.18-base      |
 
-Download Linux source through git submodule command once.
-```
-# git submodule update --init linux
-```
-
 Pick a branch name from the table above, and run this command to switch to the branch
 ```
-# cd linux
 # git checkout <branch-name>
 ```
 
@@ -53,19 +53,29 @@ LOCALVERSION?[base]:
 make modules_instsall?[y/N]:
 ```
 
-
-
 ### Kernel install
-
+Copy new kernel files to a running physical/virtual machine.
 ```
 # copy-kernel.sh
 Target machine IP?
 128.105.144.129
-success
-Kernel version[4.18.0]:
 ```
 
-### Update Kernel
+### Kernel parameter setup
+Depending on I/O virtualization, update GRUB_CMDLINE_LINUX in `/etc/default/grub` file. By default, it would look like this
+```
+GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
+```
+Append proper options from the table below.
+
+| Virtualization Level       | Baseline for L2 | Baseline for L3 |
+| -------------              |---------------- | --------------- |
+| L0                         | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=10 <br> kvm-intel.nested=1 |    
+| L1                         | - | kvm-intel.nested=1 |
+| L2                         | - | - |
+| L3                         | - | - |
+
+
 * Set kernel parameters
   * For PV, PT, DVH-VP, and DVH
     * For L0 to L3
