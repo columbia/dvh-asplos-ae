@@ -24,6 +24,11 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 | L2                         | v4.18-base | v4.18-base      | v4.18-DVH-basic |
 | L3                         | v4.18-base | -               | v4.18-base      |
 
+Download Linux source through git submodule command once.
+```
+# git submodule update --init linux
+```
+
 Pick a branch name from the table above, and run this command to switch to the branch
 ```
 # cd linux
@@ -68,6 +73,10 @@ Kernel version[4.18.0]:
 | -------------              |------------ | ----------------| --------------- |
 | L0                         | v3.1.0-base | v3.1.0-dvh-L0    | v3.1.0-dvh-L0    |
 
+Download QEMU source through git submodule command once.
+```
+# git submodule update --init qemu
+```
 Pick a branch name from the table above, and run this command to switch to the branch
 ```
 # cd qemu
