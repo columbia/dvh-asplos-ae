@@ -55,7 +55,7 @@ make modules_instsall?[y/N]:
 ```
 
 ### Kernel install
-Copy new kernel files to a running physical/virtual machine.
+Copy new kernel files to a running physical/virtual machine. Note that the machine you ran `build-n-install.sh` on already has kernel files in place.
 ```
 # copy-kernel.sh
 Target machine IP?
