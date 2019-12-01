@@ -123,6 +123,7 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
+See troubleshooting(#troubleshooting) if you encounter any problems.
 
 ## Server Setup
 
@@ -166,4 +167,14 @@ This script prints out the experimental results.
 ```
 
 
+## Troubleshooting
+* If you got an error when building QEMU like this,
+```
+# ./configure --target-list=x86_64-softmmu && make clean && make -j
+ERROR: glib-2.40 gthread-2.0 is required to compile QEMU
+```
 
+install required packages.
+```
+apt-get build-dep qemu
+```
