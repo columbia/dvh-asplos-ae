@@ -47,7 +47,7 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 
 ### Kernel compile
-Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format: 4.18.0-`branch name after v4.18-`, e.g. 4.18.0-base.
+Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format: 4.18.0-`branch name after v4.18-`, e.g. 4.18.0-base. See [troubleshooting](#troubleshooting) if you encounter any problems.
 ```
 # build-n-install.sh
 LOCALVERSION?[base]:
@@ -168,7 +168,7 @@ This script prints out the experimental results.
 
 
 ## Troubleshooting
-* If you got an error when building QEMU like this,
+* If you got an error related to missing packages when building Linux or QEMU like this,
 ```
 # ./configure --target-list=x86_64-softmmu && make clean && make -j
 ERROR: glib-2.40 gthread-2.0 is required to compile QEMU
