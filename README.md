@@ -123,7 +123,7 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
-See troubleshooting(#troubleshooting) if you encounter any problems.
+See [troubleshooting](#troubleshooting) if you encounter any problems.
 
 ## Server Setup
 
