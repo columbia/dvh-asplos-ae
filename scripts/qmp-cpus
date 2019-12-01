@@ -1,0 +1,61 @@
+#!/usr/bin/python
+##
+# QEMU Object Model Query VCPU Thread PIDs
+#
+# Copyright Columbia University, 2015
+#
+# Authors:
+#  Christoffer Dall <cdall@cs.columbia.edu>
+#
+# This work is licensed under the terms of the GNU GPL, version 2 or later.  See
+# the COPYING file in the top-level directory.
+##
+
+import sys
+import os
+from qmp import QEMUMonitorProtocol
+
+cmd, args = sys.argv[0], sys.argv[1:]
+socket_path = None
+path = None
+prop = None
+
+def usage():
+    return '''environment variables:
+    QMP_SOCKET=<path | addr:port>
+usage:
+    %s [-h] [-s <QMP socket path | addr:port>]
+''' % cmd
+
+def usage_error(error_msg = "unspecified error"):
+    sys.stderr.write('%s\nERROR: %s\n' % (usage(), error_msg))
+    exit(1)
+
+if len(args) > 0:
+    if args[0] == "-h":
+        print usage()
+        exit(0);
+    elif args[0] == "-s":
+        try:
+            socket_path = args[1]
+        except:
+            usage_error("missing argument: QMP socket path or address");
+
+if not socket_path:
+    if os.environ.has_key('QMP_SOCKET'):
+        socket_path = os.environ['QMP_SOCKET']
+    else:
+        usage_error("no QMP socket path or address given");
+
+srv = QEMUMonitorProtocol(socket_path)
+srv.connect()
+
+rsp = srv.command('query-cpus')
+if type(rsp) == dict:
+    for i in rsp.keys():
+        print '%s: %s' % (i, rsp[i])
+elif type(rsp) == list:
+    for cpu_info in rsp:
+        print "CPU%d thread_id: %d" % (cpu_info['CPU'], cpu_info['thread_id'])
+else:
+    print rsp
