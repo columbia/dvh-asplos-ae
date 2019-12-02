@@ -7,10 +7,11 @@ Artifacts Evaluation for ASPLOS 2020
 * Virtual machine image file. (Download here(TODO))
 * Two physical machines connected via private network for stable and precise measurements (Update for migration as well)
 * Also mention that we need specific IP addresses to make things work.
-* Need PIP and pexpect
+* Need PIP and pexpect, and other packages
 ```
 apt-get install python-pip
 pip install pexpect
+apt-get install brctl
 ```
 
 ## Basic preparation
