@@ -102,7 +102,7 @@ Append proper options to the line from the table below. Note that no configurati
 
 For example, the line would look like this for L0 kernel for L3 measurements
 ```
-GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1
+GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
 
 Once you updated the `grub` file, do the followings to make the change effective.
