@@ -76,14 +76,31 @@ Depending on I/O virtualization, update the line starting GRUB_CMDLINE_LINUX in 
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
-Append proper options to the line from the table below.
+Append proper options to the line from the table below. Note that no configuration change is required for the last level VM.
+
+* For L1 measurements
   
-| Virtualization Level       | Baseline for L2 | Baseline for L3 | Passthrough for L2 |
-| -------------              |---------------- | --------------- |--------------------|
-| L0                         | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=10 <br> kvm-intel.nested=1 | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on |
-| L1                         | - | kvm-intel.nested=1 | intel_iommu=on |
-| L2                         | - | - | - |
-| L3                         | - | - | - |
+| Virtualization Level       | Baseline        | Passthrough         |
+| -------------              |---------------- | --------------------|
+| L0                         | maxcpus=6 <br>  | maxcpus=6 <br>  intel_iommu=on |
+
+
+* For L2 measurements
+  
+| Virtualization Level       | Baseline | Passthrough |
+| -------------              |---------------- | --------------------|
+| L0                         | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on |
+| L1                         | - | intel_iommu=on |
+
+* For L3 measurements
+
+| Virtualization Level       | Baseline|
+| -------------              | --------|
+| L0                         | maxcpus=10 <br> kvm-intel.nested=1 |
+| L1                         | - | 
+| L2                         | - |
+
+
 
 For example, the line would look like this for L0 kernel for L3 measurements
 ```
