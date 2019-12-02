@@ -11,7 +11,7 @@ Artifacts Evaluation for ASPLOS 2020
 ```
 apt-get install python-pip
 pip install pexpect
-apt-get install brctl
+apt-get install bridge-utils
 ```
 
 ## Basic preparation
