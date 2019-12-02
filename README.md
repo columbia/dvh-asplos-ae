@@ -149,20 +149,16 @@ See [troubleshooting](#troubleshooting) if you encounter any problems.
 ## Server Setup
 
 ### Run Virtual machines
-TODO: set qemu path, pin_vcpus, 
-TODO: Update env/vm_api_example.py. Remove Small mem option. Maybe have one option for DVH
-Select options
+
+Run the `run-vm.py` script and set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
+
 ```
-# ./vm_api_example.py
-1. [True] SMP
-2. [False] SmallMemory
+# cd scripts
+# ./run-vm.py
+--------- VM configurations -------
+1. [/sdb/v4.18.img] VM Image path
+2. [base] VM Configuration
 3. [2] Virtualization Level
-4. [pv] I/O virtualization model (pv, pt, or vp)
-6. [n] Virtual timer
-7. [n] Virtual ipi
-8. [n] Virtual idle
-9. [n] FS_BASE fix
-10. [False] Migration
 Enter number to update configuration. Enter 0 to finish:
 ```
 
