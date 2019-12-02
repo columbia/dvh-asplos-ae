@@ -121,7 +121,7 @@ def add_special_options(vm_level, lx_cmd):
 
 def get_base_cmd(vm_level):
 	if vm_level == 1:
-		lx_cmd = 'cd /srv/vm && '
+		lx_cmd = ''
 	else:
 		lx_cmd = 'cd ~/vm && '
 
@@ -141,6 +141,9 @@ def get_iovirt_cmd(vm_level, lx_cmd):
 		lx_cmd += cmd_pv
 
 	return lx_cmd
+
+def add_vm_image_path(lx_cmd):
+    return lx_cmd + ' -i ' + params.vm_image
 
 def configure_dvh(vm_level):
     child = g_child
@@ -171,6 +174,7 @@ def boot_vms(bootLevel=0):
         lx_cmd = get_iovirt_cmd(vm_level, lx_cmd)
         lx_cmd = add_special_options(vm_level, lx_cmd)
         lx_cmd = add_dvh_options(vm_level, lx_cmd)
+        lx_cmd = add_vm_image_path(lx_cmd)
         print (lx_cmd)
 
         configure_dvh(vm_level)
