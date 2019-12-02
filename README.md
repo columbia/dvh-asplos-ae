@@ -78,13 +78,16 @@ GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
 Append proper options to the line from the table below.
 
-| Virtualization Level       | Baseline for L2 | Baseline for L3 |
+<sub>
+  
+| Virtualization Level       | Baseline  for L2 | Baseline for L3 |
 | -------------              |---------------- | --------------- |
 | L0                         | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=10 <br> kvm-intel.nested=1 |    
 | L1                         | - | kvm-intel.nested=1 |
 | L2                         | - | - |
 | L3                         | - | - |
 
+</sub>
 For example, the line would look like this for L0 kernel for L3 measurements
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1
