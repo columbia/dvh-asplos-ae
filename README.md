@@ -80,27 +80,25 @@ Append proper options to the line from the table below. Note that no configurati
 
 * For L1 measurements
   
-| Virtualization Level       | Baseline        | Passthrough         |
-| -------------              |---------------- | --------------------|
-| L0                         | maxcpus=6 <br>  | maxcpus=6 <br>  intel_iommu=on |
+|    | Baseline        | Passthrough         |
+|--- |---------------- | --------------------|
+| L0 | maxcpus=6 <br>  | maxcpus=6 <br>  intel_iommu=on |
 
 
 * For L2 measurements
   
-| Virtualization Level       | Baseline | Passthrough |
-| -------------              |---------------- | --------------------|
-| L0                         | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on |
-| L1                         | - | intel_iommu=on |
+|    | Baseline | Passthrough | DVH-VP and DVH|
+| ---|----------| ------------| ----------    |
+| L0 | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on | maxcpus=8 <br> kvm-intel.nested=1 |
+| L1 | - | intel_iommu=on |intel_iommu=on |
 
 * For L3 measurements
 
-| Virtualization Level       | Baseline|
-| -------------              | --------|
-| L0                         | maxcpus=10 <br> kvm-intel.nested=1 |
-| L1                         | - | 
-| L2                         | - |
-
-
+|    | Baseline | Passthrough | DVH-VP and DVH |
+| ---| -------- | ---         | ---            |
+| L0 | maxcpus=10 <br> kvm-intel.nested=1 |  maxcpus=10 <br> kvm-intel.nested=1 <br> intel_iommu=on | maxcpus=10 <br> kvm-intel.nested=1 |
+| L1 | - | kvm-intel.nested=1 <br> intel_iommu=on | kvm-intel.nested=1 <br> intel_iommu=on |
+| L2 | - | intel_iommu=on |intel_iommu=on |
 
 For example, the line would look like this for L0 kernel for L3 measurements
 ```
