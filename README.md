@@ -27,7 +27,7 @@ Prepare two physical machines and connect them through a private network. We use
 * A physical machine running virtual machines (i.e. L0): 10.10.1.2
 * A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
 
-Run the `run-vm.py` script and set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
+Download the virtual machine in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
 ```
 # cd scripts
 # ./run-vm.py
@@ -38,7 +38,7 @@ Run the `run-vm.py` script and set up the VM image path, virtualization level an
 Enter number to update configuration. Enter 0 to finish:
 ```
 
-Virtual machines are configured to use the following IP addresses already.
+Virtual machines are configured to have the following IP addresses already.
 * L1: 10.10.1.100
 * L2: 10.10.1.101
 * L3: 10.10.1.102
