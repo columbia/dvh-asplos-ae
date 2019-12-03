@@ -326,11 +326,11 @@ if [ "$XEN" == 1 ]; then
 	MEMSIZE=`expr $MEMSIZE + 1`
 fi
 
-#hostname=`hostname | cut -d . -f1`
-#if [ -z $MIGRAION_DST ]  && [ "$IS_HOST" == 1 ]; then
-#	# Install host ssh key to VM
-#	if [ "$WINDOWS" != 1 ]; then
-#		source ssh-key-check.sh $FS
-#	fi
-#fi
+hostname=`hostname | cut -d . -f1`
+if [ -z $MIGRAION_DST ]  && [ "$IS_HOST" == 1 ]; then
+	# Install host ssh key to VM
+	if [ "$WINDOWS" != 1 ]; then
+		source mount-and-copy-ssh-key.sh $FS
+	fi
+fi
 
