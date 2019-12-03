@@ -55,12 +55,12 @@ Run all commands in this Kernel Setup section under `./linux` directory after Li
 
 ### Branch information
 
-| Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
-| -------------              |------------| ----------------| --------------- |
-| L0                         | v4.18-base | v4.18-DVH-L0    | v4.18-DVH-L0    |
-| L1                         | v4.18-base | v4.18-DVH-basic | v4.18-DVH-full  |
-| L2                         | v4.18-base | v4.18-base      | v4.18-DVH-basic |
-| L3                         | v4.18-base | -               | v4.18-base      |
+|    | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
+| ---|------------| ----------------| --------------- |
+| L0 | v4.18-base | v4.18-DVH-L0    | v4.18-DVH-L0    |
+| L1 | v4.18-base | v4.18-DVH-basic | v4.18-DVH-full  |
+| L2 | v4.18-base | v4.18-base      | v4.18-DVH-basic |
+| L3 | v4.18-base | -               | v4.18-base      |
 
 Pick a branch name from the table above, and run this command to switch to the branch
 ```
@@ -146,12 +146,12 @@ Ensure that the kernel version and core numbers are changed correctly with the f
 ## QEMU Setup
 This needs to be done on bare-metal machine and virtual machines.
 
-### QEMU branches (TBD for L1~L3)
-| Virtualization Level       | Baseline, passthrough| DVH-VP | DVH              |
-| -------------              |------------ | ----------------|---------         |
-| L0                         | v3.1.0-base | v3.1.0-vp-L0    | v3.1.0-dvh-L0    |
-| L1                         | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
-| L2                         | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
+### QEMU branches for running VMs
+|       | Baseline, passthrough| DVH-VP         | DVH                      |
+| ---   |------------ | ----------------        |---------                 |
+| L1 VM | v3.1.0-base | v3.1.0-vp-L0            | v3.1.0-dvh-L0            |
+| L2 VM | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
+| L3 VM | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
 
 Download QEMU source through git submodule command once.
 ```
