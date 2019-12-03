@@ -6,9 +6,10 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 * A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
 
 ## Basic preparation
-Clone this repository. Note that all the commands other than this git clone command need to be executed in the directory this repo is cloned.
+Clone this repository. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
 ```
 # git clone https://github.com/columbia/dvh-asplos-ae.git
+# cd dvh-asplos-ae
 ```
 
 Run this command to copy helper scripts to a local directory in $PATH, which is set to /usr/local/bin in the script.
