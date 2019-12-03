@@ -1,20 +1,9 @@
 # Optimizing Nested Virtualization Performance Using Direct Virtual Hardware
-Artifacts Evaluation for ASPLOS 2020
-
-(TODO) Table of contents.
+This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the source code and instructions to run experiments presented in the paper
 
 ## Prerequisites
-* Virtual machine image file. (Download here(TODO))
-* Two physical machines connected via private network for stable and precise measurements (Update for migration as well)
-* Copying ssh keys
-* Also mention that we need specific IP addresses to make things work.
-* Need PIP and pexpect (of a specific version), and other packages
-```
-apt-get install python-pip
-pip install 'pexpect==3.1' --force-reinstall
-pip install pexpect
-apt-get install bridge-utils
-```
+* Two physical machines connected by <em>private</em> network for stable and precise measurements.
+* A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
 
 ## Basic preparation
 Clone this repository. Note that all the commands other than this git clone command need to be executed in the directory this repo is cloned.
@@ -27,6 +16,33 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 # cd scripts
 # ./install_scripts.sh
 ```
+
+Run this command to install packages to compile software and to run VMs.
+```
+# ./install_packages.sh
+```
+## Physical / virtual machine setup
+Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments.
+* A physical machine running virtual machines (i.e. L0): 10.10.1.2
+* A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
+
+Run the `run-vm.py` script and set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
+```
+# cd scripts
+# ./run-vm.py
+--------- VM configurations -------
+1. [/sdb/v4.18.img] VM Image path
+2. [base] VM Configuration
+3. [2] Virtualization Level
+Enter number to update configuration. Enter 0 to finish:
+```
+
+Virtual machines are configured to use the following IP addresses already.
+* L1: 10.10.1.100
+* L2: 10.10.1.101
+* L3: 10.10.1.102
+
+For convienient access from physical machines to virtual machines, the ssh public key in the L0 will be copied to virtual machines automatically in the first run. (TODO: do the same for the client ssh key.)
 
 ## Kernel Setup
 Download Linux source through git submodule command once.
@@ -56,7 +72,7 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 
 ### Kernel compile
-Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format: 4.18.0-`branch name after v4.18-`, e.g. 4.18.0-base. See [troubleshooting](#troubleshooting) if you encounter any problems.
+Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format by default: 4.18.0-`branch name`, e.g. 4.18.0-base.
 ```
 # build-n-install.sh
 LOCALVERSION?[base]:
@@ -68,7 +84,7 @@ Copy new kernel files to a running physical/virtual machine. Note that the machi
 ```
 # copy-kernel.sh
 Target machine IP?
-128.105.144.129
+10.10.1.100
 ```
 
 ### Kernel parameter setup
@@ -109,7 +125,7 @@ Append proper options to the line from the table below. Note that no configurati
 | L1 | - | kvm-intel.nested=1 <br> intel_iommu=on | kvm-intel.nested=1 <br> intel_iommu=on |
 | L2 | - | intel_iommu=on |intel_iommu=on |
 
-For example, the line would look like this for L0 kernel for L3 measurements
+For example, L0 kernel parameter for L3 measurements would look like this.
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
@@ -127,12 +143,14 @@ Ensure that the kernel version and core numbers are changed correctly with the f
 ```
 
 ## QEMU Setup
-This needs to be done on bare-metal machine and virtual machines, not on a separate machine.
+This needs to be done on bare-metal machine and virtual machines.
 
 ### QEMU branches (TBD for L1~L3)
-| Virtualization Level       | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
+| Virtualization Level       | Baseline, passthrough  | DVH-VP | DVH for L2| DVH for L3 |
 | -------------              |------------ | ----------------| --------------- |
-| L0                         | v3.1.0-base | v3.1.0-dvh-L0    | v3.1.0-dvh-L0    |
+| L0                         | v3.1.0-base | TBD | v3.1.0-dvh-L0    | v3.1.0-dvh-L0    |
+| L1                         | v3.1.0-base | TBD | v3.1.0-dvh-L0    | v3.1.0-dvh-L0    |
+| L2                         | v3.1.0-base | TBD | v3.1.0-dvh-L0    | v3.1.0-dvh-L0    |
 
 Download QEMU source through git submodule command once.
 ```
@@ -147,23 +165,8 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
-See [troubleshooting](#troubleshooting) if you encounter any problems.
 
-## Server Setup
-
-### Run Virtual machines
-
-Run the `run-vm.py` script and set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
-
-```
-# cd scripts
-# ./run-vm.py
---------- VM configurations -------
-1. [/sdb/v4.18.img] VM Image path
-2. [base] VM Configuration
-3. [2] Virtualization Level
-Enter number to update configuration. Enter 0 to finish:
-```
+# From here, to be done.
 
 ## Client Setup
 (TODO) Make this repo only have scripts
@@ -184,17 +187,4 @@ git submodule update --init submoduleName
 This script prints out the experimental results.
 ```
 # ./results.py
-```
-
-
-## Troubleshooting
-* If you got an error related to missing packages when building Linux or QEMU like this,
-```
-# ./configure --target-list=x86_64-softmmu && make clean && make -j
-ERROR: glib-2.40 gthread-2.0 is required to compile QEMU
-```
-
-install required packages.
-```
-apt-get build-dep qemu
 ```
