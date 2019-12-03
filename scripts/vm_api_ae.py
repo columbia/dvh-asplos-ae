@@ -154,6 +154,8 @@ def configure_dvh(vm_level):
 
     for f in params.dvh:
         dvh_filename='/sys/kernel/debug/dvh/' + f
+        if not os.path.exists(dvh_filename):
+            continue
         cmd = 'echo %s > %s' % (params.dvh[f], dvh_filename)
         child.sendline(cmd)
         # Wait for host prompt
