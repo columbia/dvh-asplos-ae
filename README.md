@@ -6,10 +6,12 @@ Artifacts Evaluation for ASPLOS 2020
 ## Prerequisites
 * Virtual machine image file. (Download here(TODO))
 * Two physical machines connected via private network for stable and precise measurements (Update for migration as well)
+* Copying ssh keys
 * Also mention that we need specific IP addresses to make things work.
-* Need PIP and pexpect, and other packages
+* Need PIP and pexpect (of a specific version), and other packages
 ```
 apt-get install python-pip
+pip install 'pexpect==3.1' --force-reinstall
 pip install pexpect
 apt-get install bridge-utils
 ```
