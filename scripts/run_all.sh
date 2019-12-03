@@ -13,9 +13,6 @@ TEST_USER="root"
 
 mysql_option=''
 echo $SINGLE_WORKLOAD
-if [[ -z $SINGLE_WORKLOAD ]]; then
-	source ./check.sh $TEST_LEVEL
-fi
 
 LOCAL=0
 IDX_OFFSET=3
