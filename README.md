@@ -18,7 +18,7 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 # ./install_scripts.sh
 ```
 
-Run this command to install packages to compile software and to run VMs.
+Run this command to install packages used to compile software and run VMs.
 ```
 # ./install_packages.sh
 ```
