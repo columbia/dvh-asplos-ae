@@ -147,11 +147,11 @@ Ensure that the kernel version and core numbers are changed correctly with the f
 This needs to be done on bare-metal machine and virtual machines.
 
 ### QEMU branches (TBD for L1~L3)
-| Virtualization Level       | Baseline, passthrough| DVH-VP | DVH for L2       |
+| Virtualization Level       | Baseline, passthrough| DVH-VP | DVH              |
 | -------------              |------------ | ----------------|---------         |
 | L0                         | v3.1.0-base | v3.1.0-vp-L0    | v3.1.0-dvh-L0    |
-| L1                         | v3.1.0-base | v3.1.0-vp-guest | v3.1.0-dvh-guest |
-| L2                         | v3.1.0-base | v3.1.0-vp-guest | v3.1.0-dvh-guest |
+| L1                         | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
+| L2                         | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
 
 Download QEMU source through git submodule command once.
 ```
