@@ -144,7 +144,11 @@ Ensure that the kernel version and core numbers are changed correctly with the f
 ```
 
 ## QEMU Setup
-This needs to be done on bare-metal machine and virtual machines.
+
+Download QEMU source through git submodule command once.
+```
+# git submodule update --init qemu
+```
 
 ### QEMU branches for running VMs
 |       | Baseline, passthrough| DVH-VP         | DVH                      |
@@ -153,11 +157,8 @@ This needs to be done on bare-metal machine and virtual machines.
 | L2 VM | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
 | L3 VM | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
 
-Download QEMU source through git submodule command once.
-```
-# git submodule update --init qemu
-```
-Pick a branch name from the table above, and run this command to switch to the branch
+Pick a branch name from the table above, and run this command to switch to the branch. Note that QEMU is already ready in the virtual machine image provided, so only QEMUs for L1 VM need to be prepared as follows.
+
 ```
 # cd qemu
 # git checkout <branch-name>
