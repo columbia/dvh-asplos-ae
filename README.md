@@ -35,7 +35,7 @@ Download the virtual machine in the L0 machine. Then,run the `run-vm.py` script 
 1. [/sdb/v4.18.img] VM Image path
 2. [base] VM Configuration
 3. [2] Virtualization Level
-Enter number to update configuration. Enter 0 to finish:
+Enter number to update configuration. Enter 0 to start a VM:
 ```
 
 Virtual machines are configured to have the following IP addresses already.
