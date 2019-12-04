@@ -56,7 +56,7 @@ function print_target_tests()
 
 function setup_ip_kvmpath()
 {
-	KVMPERF_PATH="/root/kvmperf"
+	KVMPERF_PATH="/root/dvh-asplos-ae/scripts"
 
 	echo "TEST LEVEL: $TEST_LEVEL"
 	if [ $TEST_LEVEL == "L2" ] ; then
@@ -70,7 +70,7 @@ function setup_ip_kvmpath()
 	elif [ $TEST_LEVEL == "L3" ] ; then
 		TARGET_IP=$L3_IP
 	else
-		echo "Usage: ./run_all [L0|L1|L2|L3]"
+		echo "Usage: ./run-benchmarks [L0|L1|L2|L3]"
 		exit
 	fi
 	echo "TARGET IP: $TARGET_IP"
@@ -138,7 +138,7 @@ show_tests() {
 	if [[ $LOCAL == 1 ]]; then
 		echo -n "*"
 	fi
-	echo [$i] "local tests (hackbench and kernbench)"
+	echo [$i] "local tests (hackbench for now)"
 
 	for TEST in ${TEST_LIST[@]}; do
 		i=$(($i+1))
@@ -215,8 +215,8 @@ sudo rm -f *.txt
 
 TESTS=( $TESTS )
 SERVICES=( $SERVICES )
-CMD_PATH=$KVMPERF_PATH/cmdline_tests
-LOCAL_PATH=$KVMPERF_PATH/localtests
+CMD_PATH=$KVMPERF_PATH
+LOCAL_PATH=$KVMPERF_PATH
 
 if [[ -n $TEST_DESC ]]; then
 	mkdir $TEST_DESC
