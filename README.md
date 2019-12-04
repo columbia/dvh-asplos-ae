@@ -56,11 +56,11 @@ Run all commands in this Kernel Setup section under `./linux` directory after Li
 ### Branch information
 
 |    | Baseline and passthrough |  DVH-VP  | DVH for L2| DVH for L3 |
-| ---|------------| --- | ----------------| --------------- |
-| L0 | v4.18-base | TBD | v4.18-dvh-L0    | v4.18-dvh-L0    |
-| L1 | v4.18-base | TBD | v4.18-dvh-basic | v4.18-dvh-full  |
-| L2 | v4.18-base | TBD | v4.18-base      | v4.18-dvh-basic |
-| L3 | v4.18-base | TBD | -               | v4.18-base      |
+| ---|------------| ---                    | ----------------| --------------- |
+| L0 | v4.18-base | v4.18-dvh-vp-L0        | v4.18-dvh-L0    | v4.18-dvh-L0    |
+| L1 | v4.18-base | v4.18-dvh-vp-guest     | v4.18-dvh-basic | v4.18-dvh-full  |
+| L2 | v4.18-base | v4.18-dvh-vp-guest     | v4.18-base      | v4.18-dvh-basic |
+| L3 | v4.18-base | v4.18-base             | -               | v4.18-base      |
 
 Pick a branch name from the table above, and run this command to switch to the branch
 ```
