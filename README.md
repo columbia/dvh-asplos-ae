@@ -228,16 +228,14 @@ netperf-stream
 
 ## Instructions for Cloudlab
 * Use `x86-u16-two` profile for experiments. To get enough storage, do the following.
-  ```
-  # mkfs.ext4 /dev/sda4
-  # mkdir /vm
-  # mount /dev/sda4 /vm
-  ```
+```
+# mkfs.ext4 /dev/sda4
+# mkdir /vm
+# mount /dev/sda4 /vm
+```
 * Use `tdataset` profile for compiling code, especially Linux kernel. To get enough storage, do the following.
 ```
 # cd /tmp/env/scripts 
 # ./mkfs-wisc-sdc.sh
 # cd /sdc
 ```
-
-
