@@ -35,7 +35,7 @@ Download the virtual machine in the L0 machine. Then,run the `run-vm.py` script 
 1. [/sdb/v4.18.img] VM Image path
 2. [base] VM Configuration
 3. [2] Virtualization Level
-Enter number to update configuration. Enter 0 to finish:
+Enter number to update configuration. Enter 0 to start a VM:
 ```
 
 Virtual machines are configured to have the following IP addresses already.
@@ -55,12 +55,12 @@ Run all commands in this Kernel Setup section under `./linux` directory after Li
 
 ### Branch information
 
-|    | Baseline, passthrough, and  DVH-VP  | DVH for L2| DVH for L3 |
-| ---|------------| ----------------| --------------- |
-| L0 | v4.18-base | v4.18-DVH-L0    | v4.18-DVH-L0    |
-| L1 | v4.18-base | v4.18-DVH-basic | v4.18-DVH-full  |
-| L2 | v4.18-base | v4.18-base      | v4.18-DVH-basic |
-| L3 | v4.18-base | -               | v4.18-base      |
+|    | Baseline and passthrough |  DVH-VP  | DVH for L2| DVH for L3 |
+| ---|------------| ---                    | ----------------| --------------- |
+| L0 | v4.18-base | v4.18-dvh-vp-L0        | v4.18-dvh-L0    | v4.18-dvh-L0    |
+| L1 | v4.18-base | v4.18-dvh-vp-guest     | v4.18-dvh-basic | v4.18-dvh-full  |
+| L2 | v4.18-base | v4.18-dvh-vp-guest     | v4.18-base      | v4.18-dvh-basic |
+| L3 | v4.18-base | v4.18-base             | -               | v4.18-base      |
 
 Pick a branch name from the table above, and run this command to switch to the branch
 ```
@@ -104,6 +104,13 @@ GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
 Append proper options to the line from the table below. Note that no configuration change is required for the last level VM.
 
+* For L0 measurements
+  
+|    | Baseline        |
+|--- |---------------- |
+| L0 | maxcpus=4 <br>  |
+
+
 * For L1 measurements
   
 |    | Baseline        | Passthrough         |
@@ -126,7 +133,7 @@ Append proper options to the line from the table below. Note that no configurati
 | L1 | - | kvm-intel.nested=1 <br> intel_iommu=on | kvm-intel.nested=1 <br> intel_iommu=on |
 | L2 | - | intel_iommu=on |intel_iommu=on |
 
-For example, L0 kernel parameter for L3 measurements would look like this.
+For example, L0 kernel parameter for L3 baseline measurements would look like this.
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
