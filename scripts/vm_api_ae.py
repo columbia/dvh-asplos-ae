@@ -123,7 +123,7 @@ def get_base_cmd(vm_level):
 	if vm_level == 1:
 		lx_cmd = ''
 	else:
-		lx_cmd = 'cd ~/dvh-asplos-ae && '
+		lx_cmd = 'cd ~/dvh-asplos-ae/scripts && '
 
 	return lx_cmd
 
