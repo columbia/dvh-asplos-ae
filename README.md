@@ -232,7 +232,7 @@ netperf-stream
 ```
 
 ## Instructions for Cloudlab
-* Please sign up in [cloud.us](#https://www.cloudlab.us/signup.php) to be able to access machines.
+* Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to access machines. Join the existing project: KVM/ARM, and I will receive a notification automatically and I will let you in.
 * Use `x86-u16-two` profile for experiments. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
 ```
 # mkfs.ext4 /dev/sda4
