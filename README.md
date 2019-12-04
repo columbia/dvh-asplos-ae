@@ -133,7 +133,7 @@ Append proper options to the line from the table below. Note that no configurati
 | L1 | - | kvm-intel.nested=1 <br> intel_iommu=on | kvm-intel.nested=1 <br> intel_iommu=on |
 | L2 | - | intel_iommu=on |intel_iommu=on |
 
-For example, L0 kernel parameter for L3 measurements would look like this.
+For example, L0 kernel parameter for L3 baseline measurements would look like this.
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
