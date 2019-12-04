@@ -340,7 +340,7 @@ def print_params():
 def update_params():
     global params
 
-    num = int(raw_input("Enter number to update configuration. Enter 0 to finish: ") or "0")
+    num = int(raw_input("Enter number to update configuration. Enter 0 to start a VM: ") or "0")
 
     if num == 0:
         if not params.vm_image:
