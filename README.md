@@ -10,7 +10,7 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
   # mount /dev/sda4 /vm
   ```
 * A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
-  * The image file already has necessary Linux kernel and QEMU in place for each virtual machine. It still requires kernel boot parameter configuration for different experiments. [See]#kernel-parameter-setup
+  * The image file already has necessary Linux kernel and QEMU in place for each virtual machine. It still requires kernel boot parameter configuration for different experiments. [See]#kernel-parameter-setup and [Kernel Setup]#Kernel Setup
   * Just for Shih-Wei for testing before the submission: The image is also available in /proj/kvmarm-PG0/jintack/nested/ae-guest0.img.bz2 on Wisconsin cluster.
 
 ## Basic preparation
