@@ -212,7 +212,7 @@ Run this command in the client. It will automatically run all the applications a
 [8] memcached
 Type test number(Enter 0 to start tests): 1
 Enter test name: L2-dvh
-How many times to repeat? 5
+How many times to repeat? 3
 ```
 
 Once the experiments are done, run this command to collect results. It will show the results in csv format.
