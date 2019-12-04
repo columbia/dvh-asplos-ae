@@ -4,3 +4,6 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/columbia/dvh-asplos-ae-linux.git
+[submodule "micro"]
+	path = micro
+	url = https://github.com/columbia/dvh-asplos-ae-micro.git
