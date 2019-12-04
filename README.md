@@ -3,7 +3,14 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 
 ## Prerequisites
 * Two physical machines connected by <em>private</em> network for stable and precise measurements.
+  * If you have an account in Cloudlab.us, use `x86-u16-two` profile. To get enough storage, do the following.
+  ```
+  # mkfs.ext4 /dev/sda4
+  # mkdir /vm
+  # mount /dev/sda4 /vm
+  ```
 * A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
+  * Just for Shih-Wei for testing before the submission: The image is also available in /proj/kvmarm-PG0/jintack/nested/ae-guest0.img.bz2 on Wisconsin cluster.
 
 ## Basic preparation
 Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
