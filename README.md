@@ -6,6 +6,7 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
   * Cloudlab.us provides machines and preconfigured profiles. It is available upon request, especially for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab) at the bottom.
 * A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
   * The image file already has necessary Linux kernel and QEMU in place for each virtual machine. It still requires kernel boot parameter configuration for different experiments. See Kernel parameter setup section.
+  * The image file is zipped with pbzip2. Unzip it with the following command. **Note that you need more than 45G storage**.
   * Just for Shih-Wei for testing before the submission: The image is also available in /proj/kvmarm-PG0/jintack/nested/ae-guest0.img.bz2 on Wisconsin cluster.
 
 ## Basic preparation
