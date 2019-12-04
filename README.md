@@ -8,7 +8,7 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 ## Overview
 The experiments measure various application performance on one machine, the server machine (i.e. bare-metal machine and virtual machines), while the other machine, which is the client machine, sends workloads to the server machine.
 
-We compare application performance on bare-metal to that on different virtualization levels (from 1 to 3) with different configurations (baseline, passthrough, DVH-VP, and DVH).
+We compare application performance on bare-metal to that on virtual machines at different virtualization levels (from 1 to 3) with different configurations (baseline, passthrough, DVH-VP, and DVH).
 
 On both the server and client machines, you need to do the [basic preparation](#basic-preparation) for running various scripts and compiling source code.
 
