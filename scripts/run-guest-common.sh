@@ -17,6 +17,7 @@ TELNET_PORT=4444
 WAIT="nowait"
 MON="-monitor telnet:127.0.0.1:$TELNET_PORT,server,nowait"
 QEMU_APPEND=""
+DRY=""
 
 #Check if we are on a bare-metal machine
 uname -n | grep -q cloudlab
@@ -80,6 +81,7 @@ usage() {
 	U="$U    --cap:		       Add state capture capability to virtio dev\n"
 	U="$U    --dumpdtb <file>       Dump the generated DTB to <file>\n"
 	U="$U    --dtb <file>           Use the supplied DTB instead of the auto-generated one\n"
+	U="$U    --dry:                 Dry run\n"
 	U="$U    --debug-bios <file>:	Debug custom BIOS\n"
 	U="$U    -h | --help:           Show this output\n"
 	U="${U}\n"
@@ -166,6 +168,10 @@ do
 	  --dtb)
 		DTB="-dtb $2"
 		shift 2
+		;;
+	  --dry)
+	  	DRY=1
+		shift 1
 		;;
 	  --win)
 	  	WINDOWS=1
