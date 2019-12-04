@@ -43,7 +43,7 @@ Virtual machines are configured to have the following IP addresses already.
 * L2: 10.10.1.101
 * L3: 10.10.1.102
 
-For convienient access from physical machines to virtual machines, the ssh public key in the L0 will be copied to virtual machines automatically in the first run. (TODO: do the same for the client ssh key.)
+For convienient access from physical machines to virtual machines, the ssh public key in the L0 will be copied to virtual machines automatically when starting a VM. The client machine ssh public key, however, needs to be copied to `scripts/client_ssh_public` file first. Then it will be also copied to all virtual machines and L0 automatically when starting a VM.
 
 ## Kernel Setup
 Download Linux source through git submodule command once.
@@ -174,7 +174,7 @@ The client machine should have this repository in the home directory.
 # git clone https://github.com/columbia/dvh-asplos-ae.git
 ```
 
-The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup]#Kernel Setup. In addition, add the client ssh public key to `client_ssh_public` in scripts directory in **server** machine. This will add the client ssh public key to the server and all virtual machines when starting a virtual machine with `run-vm.py`.
+The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup]#Kernel Setup. 
 
 ## Run application benchmarks and and collect results
 Run this command in the client. It will automatically run all the applications and save results.
