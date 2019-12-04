@@ -3,7 +3,15 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 
 ## Prerequisites
 * Two physical machines connected by <em>private</em> network for stable and precise measurements.
-  * Cloudlab.us provides machines and preconfigured profiles. It is available upon request for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab).
+  * Cloudlab.us provides machines and preconfigured profiles. Machines will be available upon request for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab).
+
+## Overview
+The experiments measure various application performance on one machine, the server machine (i.e. bare-metal machine and virtual machines), where the other machine, which is the client machine, sends workloads to the server machine.
+
+We compare application performance on bare-metal to that on different virtualization levels (from 1 to 3) with different configurations (baseline, passthrough, DVH-VP, and DVH).
+
+
+
 
 ## Basic preparation
 Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
@@ -224,6 +232,7 @@ netperf-stream
 ```
 
 ## Instructions for Cloudlab
+* Please sign up in [cloud.us](#https://www.cloudlab.us/signup.php) to be able to access machines.
 * Use `x86-u16-two` profile for experiments. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
 ```
 # mkfs.ext4 /dev/sda4
