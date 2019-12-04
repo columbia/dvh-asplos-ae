@@ -190,9 +190,9 @@ Run this command in the client. It will automatically run all the applications a
 [6] netperf-maerts
 [7] apache
 [8] memcached
-Type test number(Enter 0 to start tests): 1 (<- Select all or individual application)
-Enter test name: L2-dvh (<- this script will make a directory with this name for this experiment)
-How many times to repeat? 5 (<- this will repeat the whole set 5 times. Recommend to do at least three times to ensure that the results are stable.)
+Type test number(Enter 0 to start tests): 1
+Enter test name: L2-dvh
+How many times to repeat? 5
 ```
 
 One the experiments are done, run this command to collect results. It will show the results in csv format.
