@@ -169,10 +169,12 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 
 ## Client Setup
-All you need to do to set up the client is to clone this repository.
+The client machine should have this repository in the home directory.
 ```
 # git clone https://github.com/columbia/dvh-asplos-ae.git
 ```
+
+The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup]#Kernel Setup. In addition, add the client ssh public key to `client_ssh_public` in scripts directory in **server** machine. This will add the client ssh public key to the server and all virtual machines when starting a virtual machine with `run-vm.py`.
 
 ## Run application benchmarks and and collect results
 Run this command in the client. It will automatically run all the applications and save results.
