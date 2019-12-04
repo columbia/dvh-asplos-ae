@@ -98,7 +98,7 @@ function run_tests()
 	# Run local tests
 	if [[ $LOCAL == 1 ]]; then
 		ssh $TEST_USER@$TARGET_IP "pushd ${LOCAL_PATH};rm *.txt"
-		ssh $TEST_USER@$TARGET_IP "pushd ${LOCAL_PATH};sudo ./hackbench 10"
+		ssh $TEST_USER@$TARGET_IP "pushd ${LOCAL_PATH};sudo ./hackbench.sh 10"
 		#ssh $TEST_USER@$TARGET_IP "pushd ${LOCAL_PATH};sudo ./fio.sh 3"
 		scp $TEST_USER@$TARGET_IP:"$LOCAL_PATH/*.txt" .
 	fi
