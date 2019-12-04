@@ -1,16 +1,9 @@
 # Optimizing Nested Virtualization Performance Using Direct Virtual Hardware
-This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the source code and instructions to run experiments presented in the paper
+This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the source code and instructions to run the key experiments presented in Figure 5 and 6 in the paper.
 
 ## Prerequisites
 * Two physical machines connected by <em>private</em> network for stable and precise measurements.
   * Cloudlab.us provides machines and preconfigured profiles. It is available upon request, especially for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab).
-* A virtual machine image file available in the archive. DOI number is 10.5281/zenodo.3555508.
-  * The image file already has necessary Linux kernel and QEMU in place for each virtual machine. It still requires kernel boot parameter configuration for different experiments. See Kernel parameter setup section.
-  * The image file is zipped with pbzip2. Unzip it with the following command. **Note that you need more than 45G storage**. See [Instructions for Cloudlab](#instructions-for-cloudlab) to get enough storage space for Cloudlab users.
-  ```
-  #pbzip2 -dk ae-guest0.img.bz2
-  ```
-  * Just for Shih-Wei for testing before the submission: The image is also available in /proj/kvmarm-PG0/jintack/nested/ae-guest0.img.bz2 on Wisconsin cluster.
 
 ## Basic preparation
 Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
@@ -31,7 +24,7 @@ Run this command to install packages used to compile software and run VMs.
 ```
 ## Physical / virtual machine setup
 Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments. Scripts in this repo uses those IP addresses. If you choose to use other IP addresses, please update scripts, too.
-* A physical machine running virtual machines (i.e. L0): 10.10.1.2
+* A physical machine running virtual machines (i.e. server machine): 10.10.1.2
 * A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
 
 Download the virtual machine in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
@@ -231,15 +224,24 @@ netperf-stream
 ```
 
 ## Instructions for Cloudlab
-* Use `x86-u16-two` profile for experiments. To get enough storage, do the following.
+* Use `x86-u16-two` profile for experiments. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
 ```
 # mkfs.ext4 /dev/sda4
 # mkdir /vm
 # mount /dev/sda4 /vm
 ```
-* Use `tdataset` profile for compiling code, especially Linux kernel. To get enough storage, do the following.
+
+* Copy the VM image to the directory
+```
+# cd /vm
+# cp /proj/kvmarm-PG0/jintack/nested/ae-guest0.img.bz2 .
+# pbzip2 -dk ae-guest0.img.bz2
+```
+
+* Use `tdataset` profile for compiling code, especially Linux kernel. To get enough storage for compiling kernel, do the following.
 ```
 # cd /tmp/env/scripts 
 # ./mkfs-wisc-sdc.sh
 # cd /sdc
 ```
+
