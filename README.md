@@ -3,12 +3,7 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 
 ## Prerequisites
 * Two physical machines connected by <em>private</em> network for stable and precise measurements.
-  * If you have an account in Cloudlab.us, use `x86-u16-two` profile. To get enough storage, do the following.
-  ```
-  # mkfs.ext4 /dev/sda4
-  # mkdir /vm
-  # mount /dev/sda4 /vm
-  ```
+  * Cloudlab.us provides machines and preconfigured profiles. It is available upon request, especially for artifact evaluation. See `Instructions for Cloudlab` at the bottom.
 * A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
   * The image file already has necessary Linux kernel and QEMU in place for each virtual machine. It still requires kernel boot parameter configuration for different experiments. See Kernel parameter setup section.
   * Just for Shih-Wei for testing before the submission: The image is also available in /proj/kvmarm-PG0/jintack/nested/ae-guest0.img.bz2 on Wisconsin cluster.
@@ -230,3 +225,19 @@ netperf-stream
 9414.13,9414.27
 ------------------------
 ```
+
+## Instructions for Cloudlab
+* Use `x86-u16-two` profile for experiments. To get enough storage, do the following.
+  ```
+  # mkfs.ext4 /dev/sda4
+  # mkdir /vm
+  # mount /dev/sda4 /vm
+  ```
+* Use `tdataset` profile for compiling code, especially Linux kernel. To get enough storage, do the following.
+```
+# cd /tmp/env/scripts 
+# ./mkfs-wisc-sdc.sh
+# cd /sdc
+```
+
+
