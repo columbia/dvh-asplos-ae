@@ -37,6 +37,9 @@ echo "VFIO_DEV2: "$VFIO_DEV2
 echo "IOMMU_VIRTIO_NETDEV: " $IOMMU_VIRTIO_NETDEV
 echo "IOMMU_VIRTIO_NETDEV2: " $IOMMU_VIRTIO_NETDEV2
 echo "---------- QEMU setup end ---------"
+if [ "$DRY" == 1 ]; then
+	exit
+fi
 sudo $QEMU	\
 	$IOMMU		\
 	-smp $SMP -m ${MEMSIZE}G -M $MACHINE -cpu host$CPU_HV	\

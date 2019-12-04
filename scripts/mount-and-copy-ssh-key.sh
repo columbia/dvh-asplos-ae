@@ -41,7 +41,7 @@ fi
 HOST_R_KEY=`cat /root/.ssh/id_rsa.pub`
 
 EXP_NAME=`uname -a | awk '{print $2}' | cut -d. -f2`
-#CLIENT_KEY=`cat /proj/kvmarm-PG0/jintack/keys/$EXP_NAME/client-key`
+CLIENT_KEY=`cat client_ssh_public`
 
 L1_AUTH_FILE="/mnt_l1/root/.ssh/authorized_keys"
 L2_AUTH_FILE="/mnt_l2/root/.ssh/authorized_keys"
@@ -49,7 +49,7 @@ if [[ $L3_IMG == 1 ]]; then
 	L3_AUTH_FILE="/mnt_l3/root/.ssh/authorized_keys"
 fi
 
-for key in "$HOST_R_KEY"
+for key in "$HOST_R_KEY" "$CLIENT_KEY"
 do
 	for auth_file in $L1_AUTH_FILE $L2_AUTH_FILE $L3_AUTH_FILE
 	do
@@ -66,6 +66,13 @@ do
 		fi
 	done
 done
+
+L0_AUTH_FILE="/root/.ssh/authorized_keys"
+grep -q "$CLIENT_KEY" $L0_AUTH_FILE
+err=$?
+if [[ $err != 0 ]]; then
+	echo "$CLIENT_KEY" >> $L0_AUTH_FILE
+fi
 
 if [[ $L3_IMG == 1 ]]; then
 	sudo umount /mnt_l3

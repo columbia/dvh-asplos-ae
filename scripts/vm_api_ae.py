@@ -68,6 +68,7 @@ cmd_pv = './run-guest.sh'
 cmd_vfio = './run-guest-vfio.sh'
 cmd_viommu = './run-guest-viommu.sh'
 cmd_vfio_viommu = './run-guest-vfio-viommu.sh'
+qemu_dvh_common_guest = '../qemu-dvh-common-guest'
 
 def handle_mi_options(vm_level, lx_cmd):
         if vm_level == params.mi_level:
@@ -123,8 +124,13 @@ def get_base_cmd(vm_level):
 	if vm_level == 1:
 		lx_cmd = ''
 	else:
-		lx_cmd = 'cd ~/vm && '
+		lx_cmd = 'cd ~/dvh-asplos-ae/scripts && '
 
+	return lx_cmd
+
+def add_qemu_path(vm_level, lx_cmd):
+	if vm_level != 1 and params.iovirt == "vp":
+		lx_cmd += qemu_dvh_common_guest
 	return lx_cmd
 
 def get_iovirt_cmd(vm_level, lx_cmd):
@@ -179,6 +185,7 @@ def boot_vms(bootLevel=0):
         lx_cmd = add_special_options(vm_level, lx_cmd)
         lx_cmd = add_dvh_options(vm_level, lx_cmd)
         lx_cmd = add_vm_image_path(vm_level, lx_cmd)
+        lx_cmd = add_qemu_path(vm_level, lx_cmd)
         print (lx_cmd)
 
         configure_dvh(vm_level)
@@ -340,7 +347,7 @@ def print_params():
 def update_params():
     global params
 
-    num = int(raw_input("Enter number to update configuration. Enter 0 to finish: ") or "0")
+    num = int(raw_input("Enter number to update configuration. Enter 0 to start a VM: ") or "0")
 
     if num == 0:
         if not params.vm_image:
