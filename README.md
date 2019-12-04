@@ -6,13 +6,15 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
   * Cloudlab.us provides machines and preconfigured profiles. Machines will be available upon request for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab).
 
 ## Overview
-The experiments measure various application performance on one machine, the server machine (i.e. bare-metal machine and virtual machines), where the other machine, which is the client machine, sends workloads to the server machine.
+The experiments measure various application performance on one machine, the server machine (i.e. bare-metal machine and virtual machines), while the other machine, which is the client machine, sends workloads to the server machine.
 
 We compare application performance on bare-metal to that on different virtualization levels (from 1 to 3) with different configurations (baseline, passthrough, DVH-VP, and DVH).
 
 On both the server and client machines, you need to do the [basic preparation](#basic-preparation) for running various scripts and compiling source code.
 
-For the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper qemu version](#qemu-branches-for-running-vms) for each experiment configurations.
+On the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper QEMU version](#qemu-branches-for-running-vms) for each experiment configurations in all virtualization levels. Once it's ready, you can start [running a virtual machine](#running-a-virtual-machine).
+
+On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or physical machine for bare-metal measurements), [run application benchmarks and collect results](#run-application-benchmarks-and-collect-results).
 
 
 ## Basic preparation
@@ -37,7 +39,8 @@ Prepare two physical machines and connect them through a private network. We use
 * A physical machine running virtual machines (i.e. server machine): 10.10.1.2
 * A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
 
-Download the virtual machine in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
+### Running a virtual machine
+Download the virtual machine image in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
 ```
 # cd scripts
 # ./run-vm.py
@@ -193,7 +196,7 @@ The client machine should have this repository in the home directory.
 
 The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup]#Kernel Setup. 
 
-## Run application benchmarks and and collect results
+## Run application benchmarks and collect results
 Run this command in the client. It will automatically run all the applications and save results.
 ```
 # cd dvh-asplos-ae
