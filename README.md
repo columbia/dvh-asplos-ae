@@ -260,8 +260,8 @@ netperf-stream
 
 ## Troubleshooting
 
-* If run-vm.py script went wrong and if you can't type any command, enter ctrl+C. When the script went wrong, you are still in the execution of the script. Ctrl+C will take you back to the shell.
-* If you got the following errors when running `./install_packages.sh`, please check if apt is configured well as described in this link. https://techoverflow.net/2018/05/03/how-to-fix-apt-get-source-you-must-put-some-source-uris-in-your-sources-list/
+* If `run-vm.py` script went wrong and if you can't type any command, enter ctrl+C. When the script went wrong, you are still in the execution of the script. Ctrl+C will take you back to the shell.
+* If you got the following errors when running `install_packages.sh`, please check if apt is configured well as described in this link. https://techoverflow.net/2018/05/03/how-to-fix-apt-get-source-you-must-put-some-source-uris-in-your-sources-list/
 ```
 Reading package lists... Done
 E: You must put some 'source' URIs in your sources.list
