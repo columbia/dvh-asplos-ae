@@ -6,7 +6,7 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 * A virtual machine image file available in the archive having (TBD as the last step of the submission) DOI number.
 
 ## Basic preparation
-Clone this repository. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
+Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
 ```
 # git clone https://github.com/columbia/dvh-asplos-ae.git
 # cd dvh-asplos-ae
@@ -23,7 +23,7 @@ Run this command to install packages used to compile software and run VMs.
 # ./install_packages.sh
 ```
 ## Physical / virtual machine setup
-Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments.
+Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments. Scripts in this repo uses those IP addresses. If you choose to use other IP addresses, please update scripts, too.
 * A physical machine running virtual machines (i.e. L0): 10.10.1.2
 * A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
 
@@ -168,17 +168,16 @@ Pick a branch name from the table above, and run this command to switch to the b
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
 
-## (TODO) Client Setup
-(TODO) Make this repo only have scripts
-(TODO) Make another repo for Linux, QEMU and add them as submodules
-(TODO) Update only necessary submodules since Linux is a large code base, something like this
+## Client Setup
+All you need to do to set up the client is to clone this repository.
 ```
-git submodule update --init submoduleName
+# git clone https://github.com/columbia/dvh-asplos-ae.git
 ```
 
 ## Run application benchmarks and and collect results
 Run this command in the client. It will automatically run all the applications and save results.
 ```
+# cd dvh-asplos-ae
 # cd scripts
 # ./run-benchmarks.sh [L0|L1|L2|L3]
 [0] ==== Start Test =====
@@ -195,7 +194,7 @@ Enter test name: L2-dvh
 How many times to repeat? 5
 ```
 
-One the experiments are done, run this command to collect results. It will show the results in csv format.
+Once the experiments are done, run this command to collect results. It will show the results in csv format.
 ```
 # ./results.py [test name]
 netperf-rr
