@@ -22,6 +22,7 @@ class Params:
 		self.mi_level = 0
 		self.mi_role = None
 		self.mi_fast = False
+                self.micro = False
                 self.dvh =  {
                             'virtual_ipi': 'n',
                             'virtual_timer': 'n',
@@ -180,6 +181,9 @@ def boot_vms(bootLevel=0):
     while (vm_level < level):
         vm_level += 1
 
+        if params.micro and vm_level == level:
+            return
+
         lx_cmd = get_base_cmd(vm_level)
         lx_cmd = get_iovirt_cmd(vm_level, lx_cmd)
         lx_cmd = add_special_options(vm_level, lx_cmd)
@@ -325,6 +329,7 @@ def save_params(new_params):
 VM_IMAGE = 1
 VM_CONFIG = 2
 LEVEL = 3
+MICRO = 4
 MIGRAION = 10
 MI_LEVEL = 11
 MI_SPEED = 12
@@ -336,6 +341,8 @@ def print_params():
     print("%d. [%s] VM Configuration" % (VM_CONFIG, params.vm_config))
 
     print("%d. [%s] Virtualization Level" % (LEVEL, params.level))
+
+    print("%d. [%s] Run for microbenchmarks?" % (MICRO, str(params.micro)))
 
 
     #print("%d. [%s] Migration" % (MIGRAION, str(params.mi)))
@@ -376,6 +383,9 @@ def update_params():
 
     if num == LEVEL:
         params.level = get_int_input("Input 1, 2, or 3: ")
+
+    if num == MICRO:
+        params.micro = get_boolean_input("y/n: ")
 
     if num == MIGRAION:
         params.mi = get_boolean_input("y/n: ")
