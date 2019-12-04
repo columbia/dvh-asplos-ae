@@ -18,8 +18,8 @@ LOCAL=0
 IDX_OFFSET=3
 
 # mysql should be the first one in the list
-TESTS="mysql netperf-rr netperf-stream netperf-maerts apache memcached nginx"
-SERVICES="mysql netperf netperf netperf apache2 memcached nginx"
+TESTS="mysql netperf-rr netperf-stream netperf-maerts apache memcached"
+SERVICES="mysql netperf netperf netperf apache2 memcached"
 
 TEST_LIST=( $TESTS )
 
@@ -138,7 +138,7 @@ show_tests() {
 	if [[ $LOCAL == 1 ]]; then
 		echo -n "*"
 	fi
-	echo [$i] "local tests (hackbench for now)"
+	echo [$i] "Hackbench"
 
 	for TEST in ${TEST_LIST[@]}; do
 		i=$(($i+1))
