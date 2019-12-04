@@ -29,7 +29,7 @@ Run this command to copy helper scripts to a local directory in $PATH, which is 
 # ./install_scripts.sh
 ```
 
-Run this command to install packages used to compile software and run VMs.
+Run this command to install packages used to compile software and run VMs. See [troubleshooting](#troubleshooting) for any problems.
 ```
 # ./install_packages.sh
 ```
@@ -39,7 +39,7 @@ Prepare two physical machines and connect them through a private network. We use
 * A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
 
 ### Running a virtual machine
-Download the virtual machine image in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically.
+Download the virtual machine image in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. See [troubleshooting](#troubleshooting) for any problems.
 ```
 # cd scripts
 # ./run-vm.py
@@ -258,7 +258,15 @@ netperf-stream
 # cd /sdc
 ```
 
-## TODOs
-* Do memory consumption in L0 somewhere in the workflow.
-* Troubleshoot when run-vm.py script got an error
-* Troubleshoot when apt-get isn't working as expected (uncomment src source).
+## Troubleshooting
+
+* If run-vm.py script went wrong and if you can't type any command, enter ctrl+C. When the script went wrong, you are still in the execution of the script. Ctrl+C will take you back to the shell.
+* If you got the following errors when running `./install_packages.sh`, please check if apt is configured well as described in this link. https://techoverflow.net/2018/05/03/how-to-fix-apt-get-source-you-must-put-some-source-uris-in-your-sources-list/
+```
+Reading package lists... Done
+E: You must put some 'source' URIs in your sources.list
+...
+Reading state information... Done
+E: Unable to locate package python-pip
+./install_packages.sh: line 6: pip: command not found
+```
