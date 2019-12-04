@@ -149,14 +149,12 @@ show_tests() {
 		echo [$i] $TEST
 	done
 
-	echo -n "Type test number: "
+	echo -n "Type test number(Enter 0 to start tests): "
 	read number
 
 	if [[ $number == 0 ]]; then
-		echo "Begin test"
 		break;
 	elif [[ $number == "" ]]; then
-		echo "Begin test"
 		break;
 	elif [[ $number == 1 ]]; then
 		__i=0
