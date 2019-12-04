@@ -10,7 +10,9 @@ The experiments measure various application performance on one machine, the serv
 
 We compare application performance on bare-metal to that on different virtualization levels (from 1 to 3) with different configurations (baseline, passthrough, DVH-VP, and DVH).
 
+On both the server and client machines, you need to do the [basic preparation](#basic-preparation) for running various scripts and compiling source code.
 
+For the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper qemu version](#qemu-branches-for-running-vms) for each experiment configurations.
 
 
 ## Basic preparation
@@ -254,3 +256,7 @@ netperf-stream
 # cd /sdc
 ```
 
+## TODOs
+* Do memory consumption in L0 somewhere in the workflow.
+* Troubleshoot when run-vm.py script got an error
+* Troubleshoot when apt-get isn't working as expected (uncomment src source).
