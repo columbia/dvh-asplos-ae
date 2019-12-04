@@ -104,6 +104,13 @@ GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
 Append proper options to the line from the table below. Note that no configuration change is required for the last level VM.
 
+* For L0 measurements
+  
+|    | Baseline        |
+|--- |---------------- |
+| L0 | maxcpus=4 <br>  |
+
+
 * For L1 measurements
   
 |    | Baseline        | Passthrough         |
