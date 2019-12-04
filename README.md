@@ -3,7 +3,7 @@ This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the sour
 
 ## Prerequisites
 * Two physical machines connected by <em>private</em> network for stable and precise measurements.
-  * Cloudlab.us provides machines and preconfigured profiles. It is available upon request, especially for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab).
+  * Cloudlab.us provides machines and preconfigured profiles. It is available upon request for artifact evaluation. See [Instructions for Cloudlab](#instructions-for-cloudlab).
 
 ## Basic preparation
 Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
