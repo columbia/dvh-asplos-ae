@@ -293,21 +293,21 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 ### L0 experiments
 * Baseline
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=4                         | -  |
 
 ### L1 experiments
 * Baseline
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=6                         | v3.1.0-base |
 | L1  | v4.18-base | -                                 | - |
 
 * Passthrough
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=6 <br> intel_iommu=on     | v3.1.0-base |
 | L1  | v4.18-base | -                                 | - |
@@ -316,7 +316,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 ### L2 experiments
 * Baseline
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=8 <br> kvm-intel.nested=1 | v3.1.0-base |
 | L1  | v4.18-base | -                                 | v3.1.0-base |
@@ -324,7 +324,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * Passthrough
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on | v3.1.0-base |
 | L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
@@ -332,7 +332,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * DVH-VP
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=8 <br> kvm-intel.nested=1 <br> | v3.1.0-base |
 | L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
@@ -340,7 +340,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * DVH
 
-|     |  Kernel                | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---                    | ---                               | ---  |
 | L0  | v4.18-dvh-L0-asplos    | maxcpus=8 <br> kvm-intel.nested=1 <br> | v3.1.0-dvh |
 | L1  | v4.18-dvh-basic-asplos | intel_iommu=on                    | v3.1.0-base |
@@ -350,7 +350,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * Baseline
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=10 <br> kvm-intel.nested=1 | v3.1.0-base |
 | L1  | v4.18-base | kvm-intel.nested=1                 | v3.1.0-base |
@@ -359,7 +359,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * Passthrough
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=10 <br> kvm-intel.nested=1 <br> intel_iommu=on | v3.1.0-base |
 | L1  | v4.18-base | intel_iommu=on <br> kvm-intel.nested=1 | v3.1.0-base |
@@ -368,7 +368,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * DVH-VP
 
-|     |  Kernel    | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=10 <br> kvm-intel.nested=1 <br> | v3.1.0-base |
 | L1  | v4.18-base | intel_iommu=on <br> kvm-intel.nested=1 | v3.1.0-base |
@@ -377,7 +377,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 * DVH
 
-|     |  Kernel                | Kernel param                      | QEMU |
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---                    | ---                               | ---  |
 | L0  | v4.18-dvh-L0-asplos    | maxcpus=10 <br> kvm-intel.nested=1 <br> | v3.1.0-dvh |
 | L1  | v4.18-dvh-full-asplos | intel_iommu=on <br> kvm-intel.nested=1  | v3.1.0-dvh |
