@@ -1,5 +1,5 @@
 # Optimizing Nested Virtualization Performance Using Direct Virtual Hardware
-This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the source code and instructions to run the key experiments presented in Figure 5 and 6 in the paper.
+This repository is for Artifacts Evaluation for ASPLOS 2020. It has all the source code and instructions to run the key experiments presented in Figures 5 and 6 in the paper.
 
 ## Prerequisites
 * Two physical machines connected by <em>private</em> network for stable and precise measurements.
