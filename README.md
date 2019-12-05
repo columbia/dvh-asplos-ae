@@ -58,7 +58,10 @@ Virtual machines are configured to have the following IP addresses already.
 For convienient access from physical machines to virtual machines, the ssh public key in the L0 will be copied to virtual machines automatically when starting a VM. The client machine ssh public key, however, needs to be copied to `scripts/client_ssh_public` file first. Then it will be also copied to all virtual machines and L0 automatically when starting a VM.
 
 ## Kernel Setup
-Download Linux source through git submodule command once.
+Kernel setup involves compiling and installing kernel, updating kernel parameter, and **rebooting** the machine.
+
+Download Linux source through git submodule command once. See [here](#cloudlab-profiles) to select a machine for kernel compile for Cloudlab users.
+
 Run all commands in this Kernel Setup section under `./linux` directory after Linux source is downloaded.
 ```
 # git submodule update --init linux
@@ -100,9 +103,13 @@ Target machine IP?
 10.10.1.100
 ```
 
+**Note that you need to install kernel for each virtualization level correctly. For example of DVH for L2, install v4.18-dvh-L0-asplos kernel to L0, v4.18-dvh-basic-asplos to L1, and v4.18-base to L2 respectively.**
+
 ### Kernel parameter setup
 
 Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters. This will be done by updating `/etc/default/grub` file. See additionl instructions for Cloudlab users [here](#kernel-parameter-in-cloudlab).
+
+
 
 Change `GRUB_DEFAULT` to point the copied kernel. This is an example of 4.18.0-base kernel.
 ```
@@ -150,6 +157,8 @@ For example, L0 kernel parameter for L3 baseline measurements would look like th
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
 
+**Note that parameter setup is required for each level. For example of DVH for L2, add `maxcpus=8 kvm-intel.nested=1` in L0 and add 'intel_iommu=on' in L1.
+
 Once you updated the `grub` file, do the followings to make the change effective.
 ```
 # update-grub
@@ -186,6 +195,8 @@ Pick a branch name from the table above, and run this command to switch to the b
 ```
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
+
+**Note that QEMU needs to be compiled at each level properly based on the configuration. For example of DVH for L2, compile v3.1.0-dvh in L0 and compile v3.1.0-base in L1.**
 
 ## Client Setup
 The client machine should have this repository in the home directory.
