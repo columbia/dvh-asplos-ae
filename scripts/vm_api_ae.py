@@ -50,7 +50,10 @@ mi_default = "l2"
 io_default = "vp"
 ###############################
 def wait_for_prompt(child, hostname):
-    child.expect('%s.*].*#' % hostname)
+    if hostname not in ('L1', 'L2', 'L3'):
+        child.expect('.*#')
+    else:
+        child.expect('%s.*].*#' % hostname)
 
 def wait_for_vm_prompt(child):
     child.expect('L.*].*#')
