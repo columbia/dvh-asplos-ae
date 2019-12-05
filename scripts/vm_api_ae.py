@@ -163,8 +163,6 @@ def configure_dvh(vm_level):
 
     for f in params.dvh:
         dvh_filename='/sys/kernel/debug/dvh/' + f
-        if not os.path.exists(dvh_filename):
-            continue
         cmd = 'echo %s > %s' % (params.dvh[f], dvh_filename)
         child.sendline(cmd)
         # Wait for host prompt
@@ -181,8 +179,6 @@ def boot_vms(bootLevel=0):
     while (vm_level < level):
         vm_level += 1
 
-        if params.micro and vm_level == level:
-            return
 
         lx_cmd = get_base_cmd(vm_level)
         lx_cmd = get_iovirt_cmd(vm_level, lx_cmd)
@@ -193,6 +189,9 @@ def boot_vms(bootLevel=0):
         print (lx_cmd)
 
         configure_dvh(vm_level)
+
+        if params.micro and vm_level == level:
+            return
 
         child.sendline(lx_cmd)
         child.expect(pin_waiting)
