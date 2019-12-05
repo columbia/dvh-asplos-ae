@@ -170,11 +170,11 @@ Download QEMU source through git submodule command once.
 ```
 
 ### QEMU branches for running VMs
-|       | Baseline, passthrough| DVH-VP         | DVH                      |
-| ---   |------------ | ----------------        |---------                 |
-| L1 VM | v3.1.0-base | v3.1.0-vp-L0            | v3.1.0-dvh-L0            |
-| L2 VM | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
-| L3 VM | v3.1.0-base | v3.1.0-dvh-common-guest | v3.1.0-dvh-common-guest  |
+|       | Baseline, passthrough, and DVH-VP | DVH for L2 | DVH for L3 |
+| ---   |----------------------------       |--------    | ----       |
+| L1 VM | v3.1.0-base | v3.1.0-dvh  | v3.1.0-dvh         |
+| L2 VM | v3.1.0-base | v3.1.0-base | v3.1.0-dvh         |
+| L3 VM | v3.1.0-base | -           | v3.1.0-base        |
 
 Pick a branch name from the table above, and run this command to switch to the branch. Note that QEMU is already ready in the virtual machine image provided, so only QEMUs for L1 VM need to be prepared as follows.
 
