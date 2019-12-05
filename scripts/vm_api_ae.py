@@ -69,7 +69,7 @@ cmd_pv = './run-guest.sh'
 cmd_vfio = './run-guest-vfio.sh'
 cmd_viommu = './run-guest-viommu.sh'
 cmd_vfio_viommu = './run-guest-vfio-viommu.sh'
-qemu_dvh_common_guest = '../qemu-dvh-common-guest'
+qemu_dvh_common_guest = ' -u ../qemu-dvh-common-guest'
 
 def handle_mi_options(vm_level, lx_cmd):
         if vm_level == params.mi_level:
