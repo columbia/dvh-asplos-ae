@@ -102,7 +102,7 @@ Target machine IP?
 
 ### Kernel parameter setup
 
-Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters. This will be done by updating `/etc/default/grub` file.
+Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters. This will be done by updating `/etc/default/grub` file. See additionl instructions for Cloudlab users [here](#kernel-parameter-in-cloudlab).
 
 Change `GRUB_DEFAULT` to point the copied kernel. This is an example of 4.18.0-base kernel.
 ```
@@ -236,7 +236,11 @@ netperf-stream
 ```
 
 ## Instructions for Cloudlab
-* Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to access machines. Join the existing project: KVM/ARM, and I will receive a notification automatically and I will let you in.
+
+### Joining Cloudlab
+Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to access machines. Join the existing project: KVM/ARM, and I will receive a notification automatically and I will let you in.
+
+### Cloudlab profiles
 * Use `x86-u16-two` profile for experiments. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
 ```
 # mkfs.ext4 /dev/sda4
@@ -256,6 +260,16 @@ netperf-stream
 # cd /tmp/env/scripts 
 # ./mkfs-wisc-sdc.sh
 # cd /sdc
+```
+### Kernel parameter in Cloudlab
+`/etc/default/grub` file in Cloudlab machine has duplicated entries such as GRUB_CMDLINE_LINUX. Please delete the last three lines of the file. You just need to do it only once per physical machine. It looks like the followings.
+
+```
+# The remaining lines were added by Emulab slicefix
+# DO NOT ADD ANYTHING AFTER THIS POINT AS IT WILL GET REMOVED.
+GRUB_CMDLINE_LINUX="console=ttyS0,115200"
+GRUB_TERMINAL=serial
+GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 ```
 
 ## Troubleshooting
