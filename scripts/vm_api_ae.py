@@ -82,7 +82,7 @@ def handle_mi_options(vm_level, lx_cmd):
 
 def handle_pi_options(vm_level, lx_cmd):
 	# We could support pt as well.
-	if vm_level == 1 and params.iovirt == 'vp' and params.posted:
+	if vm_level != params.level and params.iovirt == 'vp' and params.posted:
 		lx_cmd += " --pi"
 
 	return lx_cmd
@@ -151,11 +151,10 @@ def add_vm_image_path(vm_level, lx_cmd):
 def configure_dvh(vm_level):
     child = g_child
 
-    # We configure DVH using QEMU cmd line in L0
-    if vm_level == 1:
-        return
-
     for f in params.dvh:
+        # We always trap idle instruction to L0
+        if vm_level == 1 and f == 'virtual_idle':
+            continue
         dvh_filename='/sys/kernel/debug/dvh/' + f
         cmd = 'echo %s > %s' % (params.dvh[f], dvh_filename)
         child.sendline(cmd)
@@ -177,7 +176,7 @@ def boot_vms(bootLevel=0):
         lx_cmd = get_base_cmd(vm_level)
         lx_cmd = get_iovirt_cmd(vm_level, lx_cmd)
         lx_cmd = add_special_options(vm_level, lx_cmd)
-        lx_cmd = add_dvh_options(vm_level, lx_cmd)
+        #lx_cmd = add_dvh_options(vm_level, lx_cmd)
         lx_cmd = add_vm_image_path(vm_level, lx_cmd)
         print (lx_cmd)
 
