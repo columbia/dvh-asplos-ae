@@ -157,7 +157,7 @@ For example, L0 kernel parameter for L3 baseline measurements would look like th
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
 
-**Note that parameter setup is required for each level. For example of DVH for L2, add `maxcpus=8 kvm-intel.nested=1` in L0 and add 'intel_iommu=on' in L1.**
+**Note that parameter setup is required for each level. For example of DVH for L2, add `maxcpus=8 kvm-intel.nested=1` in L0 and add `intel_iommu=on` in L1.**
 
 Once you updated the `grub` file, do the followings to make the change effective.
 ```
