@@ -292,6 +292,10 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 ### L0 experiments
 * Baseline
+|     |  Kernel    | Kernel param                      | QEMU |
+| --- | ---        | ---                               | ---  |
+| L0  | v4.18-base | maxcpus=4                         | -  |
+
 
 ### L2 experiments
 * Baseline
