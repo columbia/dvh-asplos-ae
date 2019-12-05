@@ -193,7 +193,7 @@ The client machine should have this repository in the home directory.
 # git clone https://github.com/columbia/dvh-asplos-ae.git
 ```
 
-The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup]#Kernel Setup. 
+The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup](#kernel-setup). 
 
 ## Run application benchmarks and collect results
 Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server and the client machines and save results in the client machine.
