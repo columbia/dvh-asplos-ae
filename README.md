@@ -14,7 +14,7 @@ On both the server and client machines, you need to do the [basic preparation](#
 
 On the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper QEMU version](#qemu-branches-for-running-vms) for each experiment configurations in all virtualization levels. Once it's ready, you can start [running a virtual machine](#running-a-virtual-machine). Note that in a provided virtual machine image, kernel and QEMU binaries are already available. You still need to update [kernel parameters](#kernel-parameter-setup) accordingly.
 
-On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or none for bare-metal measurements), [run application benchmarks and collect results](#run-application-benchmarks-and-collect-results). It will install applications automatically during the process.
+On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or none for bare-metal measurements), [run application benchmarks and collect results](#run-application-benchmarks-and-collect-results). Application benchmarks will be automatically installed both on the server (including virtual machines) and the client during the process.
 
 ## Basic preparation
 Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
@@ -196,7 +196,7 @@ The client machine should have this repository in the home directory.
 The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup]#Kernel Setup. 
 
 ## Run application benchmarks and collect results
-Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server machine and save results in the client machine.
+Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server and the client machines and save results in the client machine.
 ```
 # cd dvh-asplos-ae
 # cd scripts
