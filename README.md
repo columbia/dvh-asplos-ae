@@ -33,6 +33,7 @@ Run this command to install packages used to compile software and run VMs. See [
 ```
 # ./install_packages.sh
 ```
+
 ## Physical / virtual machine setup
 Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments. Scripts in this repo uses those IP addresses. If you choose to use other IP addresses, please update scripts, too.
 * A physical machine running virtual machines (i.e. server machine): 10.10.1.2
@@ -286,3 +287,42 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 ## Troubleshooting
 
 * If `run-vm.py` script went wrong and if you can't type any command, enter ctrl+C. When the script went wrong, you are still in the execution of the script. Ctrl+C will take you back to the shell.
+
+## Software configurations
+
+### L0 experiments
+* Baseline
+
+### L2 experiments
+* Baseline
+
+|     |  Kernel    | Kernel param                      | QEMU |
+| --- | ---        | ---                               | ---  |
+| L0  | v4.18-base | maxcpus=8 <br> kvm-intel.nested=1 | v3.1.0-base |
+| L1  | v4.18-base | -                                 | v3.1.0-base |
+| L2  | v4.18-base | -                                 | - |
+
+* Passthrough
+
+|     |  Kernel    | Kernel param                      | QEMU |
+| --- | ---        | ---                               | ---  |
+| L0  | v4.18-base | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on | v3.1.0-base |
+| L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
+| L2  | v4.18-base | -                                 | - |
+
+* DVH-VP
+
+|     |  Kernel    | Kernel param                      | QEMU |
+| --- | ---        | ---                               | ---  |
+| L0  | v4.18-base | maxcpus=8 <br> kvm-intel.nested=1 <br> | v3.1.0-base |
+| L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
+| L2  | v4.18-base | -                                 | - |
+
+* DVH
+
+|     |  Kernel                | Kernel param                      | QEMU |
+| --- | ---                    | ---                               | ---  |
+| L0  | v4.18-dvh-L0-asplos    | maxcpus=8 <br> kvm-intel.nested=1 <br> | v3.1.0-dvh |
+| L1  | v4.18-dvh-basic-asplos | intel_iommu=on                    | v3.1.0-base |
+| L2  | v4.18-base | -                                             | - |
+
