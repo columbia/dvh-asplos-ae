@@ -69,16 +69,7 @@ Run all commands in this Kernel Setup section under `./linux` directory after Li
 # cd linux
 ```
 
-### Branch information
-
-|    | Baseline, passthrough, and DVH-VP   | DVH for L2             | DVH for L3 |
-| ---|------------                         | ----------------       | --------------- |
-| L0 | v4.18-base                          | v4.18-dvh-L0-asplos    | v4.18-dvh-L0-asplos    |
-| L1 | v4.18-base                          | v4.18-dvh-basic-asplos | v4.18-dvh-full-asplos  |
-| L2 | v4.18-base                          | v4.18-base             | v4.18-dvh-basic-asplos |
-| L3 | v4.18-base                          | -                      | v4.18-base      |
-
-Pick a branch name from the table above, and run this command to switch to the branch
+Pick a branch name from the [software configuration tables](#software-configurations), and run this command to switch to the branch.
 ```
 # git checkout <branch-name>
 ```
@@ -104,13 +95,9 @@ Target machine IP?
 10.10.1.100
 ```
 
-**Note that you need to install kernel for each virtualization level correctly. For example of DVH for L2, install v4.18-dvh-L0-asplos kernel to L0, v4.18-dvh-basic-asplos to L1, and v4.18-base to L2 respectively.**
-
 ### Kernel parameter setup
 
 Once you copy kernel, you need to update grub to boot from the copied kernel with proper kernel parameters. This will be done by updating `/etc/default/grub` file. See additionl instructions for Cloudlab users [here](#kernel-parameter-in-cloudlab).
-
-
 
 Change `GRUB_DEFAULT` to point the copied kernel. This is an example of 4.18.0-base kernel.
 ```
@@ -122,43 +109,10 @@ Depending on I/O virtualization, update the line starting GRUB_CMDLINE_LINUX in 
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
-Append proper options to the line from the table below. Note that no configuration change is required for the last level VM.
-
-* For L0 measurements
-  
-|    | Baseline        |
-|--- |---------------- |
-| L0 | maxcpus=4 <br>  |
-
-
-* For L1 measurements
-  
-|    | Baseline        | Passthrough         |
-|--- |---------------- | --------------------|
-| L0 | maxcpus=6 <br>  | maxcpus=6 <br>  intel_iommu=on |
-
-
-* For L2 measurements
-  
-|    | Baseline | Passthrough | DVH-VP and DVH|
-| ---|----------| ------------| ----------    |
-| L0 | maxcpus=8 <br> kvm-intel.nested=1 | maxcpus=8 <br> kvm-intel.nested=1 <br> intel_iommu=on | maxcpus=8 <br> kvm-intel.nested=1 |
-| L1 | - | intel_iommu=on |intel_iommu=on |
-
-* For L3 measurements
-
-|    | Baseline | Passthrough | DVH-VP and DVH |
-| ---| -------- | ---         | ---            |
-| L0 | maxcpus=10 <br> kvm-intel.nested=1 |  maxcpus=10 <br> kvm-intel.nested=1 <br> intel_iommu=on | maxcpus=10 <br> kvm-intel.nested=1 |
-| L1 | - | kvm-intel.nested=1 <br> intel_iommu=on | kvm-intel.nested=1 <br> intel_iommu=on |
-| L2 | - | intel_iommu=on |intel_iommu=on |
-
-For example, L0 kernel parameter for L3 baseline measurements would look like this.
+Append proper options to the line from the [software configuration tables](#software-configurations). For example, L0 kernel parameter for L3 baseline measurements would look like this.
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 maxcpus=10 kvm-intel.nested=1"
 ```
-
-**Note that parameter setup is required for each level. For example of DVH for L2, add `maxcpus=8 kvm-intel.nested=1` in L0 and add `intel_iommu=on` in L1.**
 
 Once you updated the `grub` file, do the followings to make the change effective.
 ```
@@ -179,25 +133,13 @@ Download QEMU source through git submodule command once.
 # git submodule update --init qemu
 ```
 
-### QEMU branches for running VMs
-|       | Baseline, passthrough, and DVH-VP | DVH for L2 | DVH for L3 |
-| ---   |----------------------------       |--------    | ----       |
-| L1 VM | v3.1.0-base | v3.1.0-dvh  | v3.1.0-dvh         |
-| L2 VM | v3.1.0-base | v3.1.0-base | v3.1.0-dvh         |
-| L3 VM | v3.1.0-base | -           | v3.1.0-base        |
-
-Pick a branch name from the table above, and run this command to switch to the branch. Note that QEMU is already ready in the virtual machine image provided, so only QEMUs for L1 VM need to be prepared as follows.
+Pick a branch name from the [software configuration tables](#software-configurations), and run this command to switch to the branch and to compile. 
 
 ```
 # cd qemu
 # git checkout <branch-name>
-```
-### Configure and compile
-```
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
-
-**Note that QEMU needs to be compiled at each level properly based on the configuration. For example of DVH for L2, compile v3.1.0-dvh in L0 and compile v3.1.0-base in L1.**
 
 ## Client Setup
 The client machine should have this repository in the home directory.
