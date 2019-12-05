@@ -262,7 +262,7 @@ Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to acc
 # cd /sdc
 ```
 ### Kernel parameter in Cloudlab
-`/etc/default/grub` file in Cloudlab machine has duplicated entries such as GRUB_CMDLINE_LINUX. Please delete the last three lines of the file. You just need to do it only once per physical machine. It looks like the followings.
+`/etc/default/grub` file in Cloudlab machine has duplicated entries such as GRUB_CMDLINE_LINUX. **Please delete the last three lines of the file.** You just need to do it only once per physical machine. It looks like the followings.
 
 ```
 # The remaining lines were added by Emulab slicefix
@@ -275,12 +275,3 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 ## Troubleshooting
 
 * If `run-vm.py` script went wrong and if you can't type any command, enter ctrl+C. When the script went wrong, you are still in the execution of the script. Ctrl+C will take you back to the shell.
-* If you got the following errors when running `install_packages.sh`, please check if apt is configured well as described in this link. https://techoverflow.net/2018/05/03/how-to-fix-apt-get-source-you-must-put-some-source-uris-in-your-sources-list/
-```
-Reading package lists... Done
-E: You must put some 'source' URIs in your sources.list
-...
-Reading state information... Done
-E: Unable to locate package python-pip
-./install_packages.sh: line 6: pip: command not found
-```
