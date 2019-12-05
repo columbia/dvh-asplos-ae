@@ -69,7 +69,6 @@ cmd_pv = './run-guest.sh'
 cmd_vfio = './run-guest-vfio.sh'
 cmd_viommu = './run-guest-viommu.sh'
 cmd_vfio_viommu = './run-guest-vfio-viommu.sh'
-qemu_dvh_common_guest = ' -u ../qemu-dvh-common-guest'
 
 def handle_mi_options(vm_level, lx_cmd):
         if vm_level == params.mi_level:
@@ -129,11 +128,6 @@ def get_base_cmd(vm_level):
 
 	return lx_cmd
 
-def add_qemu_path(vm_level, lx_cmd):
-	if vm_level != 1 and params.iovirt == "vp":
-		lx_cmd += qemu_dvh_common_guest
-	return lx_cmd
-
 def get_iovirt_cmd(vm_level, lx_cmd):
 	iovirt = params.iovirt
 
@@ -185,7 +179,6 @@ def boot_vms(bootLevel=0):
         lx_cmd = add_special_options(vm_level, lx_cmd)
         lx_cmd = add_dvh_options(vm_level, lx_cmd)
         lx_cmd = add_vm_image_path(vm_level, lx_cmd)
-        lx_cmd = add_qemu_path(vm_level, lx_cmd)
         print (lx_cmd)
 
         configure_dvh(vm_level)
