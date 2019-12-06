@@ -415,7 +415,7 @@ def consume_memory():
             size = 48
 
         print 'Wait for a second...'
-        os.system('consume_mem.sh %d' % size)
+        os.system('./consume_mem.sh %d' % size)
         print 'The host memory is set to %d succesfully'
 
 def set_params(reuse_force):
