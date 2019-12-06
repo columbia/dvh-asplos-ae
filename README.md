@@ -43,6 +43,7 @@ ssh-rsa AABB...
 ```
 From the server,
 ```
+# cd scripts
 # echo 'ssh-rsa AABB...' > client_ssh_public
 ```
 
