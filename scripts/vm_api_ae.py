@@ -201,6 +201,7 @@ def boot_vms(bootLevel=0):
         if bootLevel == vm_level:
             break
 
+    time.sleep(1)
     consume_memory()
     print ('Ready to run experiments!')
     return
@@ -408,19 +409,16 @@ def update_params():
     return True 
 
 def consume_memory():
-    consume = get_boolean_input("Want to adjust the host machine memory size for the experiments? Please do it unless you did it already for the same VM configuration")
-    if consume:
-        size = 12
-        if params.level == 1:
-            size = 24
-        elif params.level == 2:
-            size = 36
-        elif params.level == 3:
-            size = 48
+    size = 12
+    if params.level == 1:
+        size = 24
+    elif params.level == 2:
+        size = 36
+    elif params.level == 3:
+        size = 48
 
-        print 'Wait for a second...'
-        os.system('./consume_mem.sh %d' % size)
-        print 'The host memory is set to %d succesfully'
+    print 'Wait for a minute. It takes some time to finish setup'
+    os.system('./consume_mem.sh %d' % size)
 
 def set_params(reuse_force):
     global params
