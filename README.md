@@ -157,7 +157,7 @@ The client machine should have the baseline kernel, which is v4.18-base. Update 
 
 ## Running a virtual machine
 
-On the server machine, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. See [troubleshooting](#troubleshooting) for any problems.
+On the server machine, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. Wait until you see `Ready to run experiments!` message. See [troubleshooting](#troubleshooting) for any problems.
 ```
 # cd scripts
 # ./run-vm.py
@@ -166,6 +166,10 @@ On the server machine, run the `run-vm.py` script to set up the VM image path, v
 2. [base] VM Configuration
 3. [2] Virtualization Level
 Enter number to update configuration. Enter 0 to start a VM:
+...
+<virtual machine boot log>
+...
+Ready to run experiments!
 ```
 
 ## Running application benchmarks and collect results
