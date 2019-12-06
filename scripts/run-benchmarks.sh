@@ -208,6 +208,8 @@ print_target_tests
 
 setup_ip_kvmpath
 
+source ./check.sh $TEST_LEVEL
+
 #TODO: ask before delete
 sudo rm -f *.txt
 
