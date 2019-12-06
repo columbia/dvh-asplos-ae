@@ -59,7 +59,7 @@ In addition, configure virtual machines at each level use the following IP addre
 
 Once the physical machines and virtual machines are ready, follow those steps to run experiments.
 1. Prepare [Linux kernel](#kernel-setup) and [QEMU](#qemu-setup), and install them at each virtualization level and bare-metal machines. Do this only once for the client machine. See [software configuration tables](#software-configurations) to get the correct version to install.
-2. [Run a virtual machine](#running-a-virtual-machine) on the server machine.
+2. [Run a virtual machine](#running-a-virtual-machine) on the server machine or [get the server ready](#running-a-physical machine) for bare-metal measurements
 3. [Run application benchmarks and collect results](#run-application-benchmarks-and-collect-results) on the client machine
 4. Repeat 1 to 3 for all configurations in [here](#software-configurations)
 
@@ -154,6 +154,14 @@ The client machine should have this repository in the home directory.
 ```
 
 The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup](#kernel-setup). 
+
+## Running a physical machine
+For L0 measurements, we don't run any virtual machines. Run this script instead to limit the memory size as discussed in the paper. For virtual machine tests, the script is already included in `run-vm.py`.
+
+```
+# cd scripts
+# ./consume_mem.sh 12
+```
 
 ## Running a virtual machine
 
