@@ -199,6 +199,8 @@ def boot_vms(bootLevel=0):
             child.expect('L' + str(vm_level) + '.*$')
 
         if bootLevel == vm_level:
+            consume_memory()
+            print ('Ready to run experiments!')
             return
 
 REMOVE = 0
@@ -439,7 +441,6 @@ def set_params(reuse_force):
             new_params = Params()
 
         save_params(params)
-        consume_memory()
 
 
 def set_l1_addr():
