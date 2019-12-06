@@ -200,7 +200,7 @@ Enter test name: L2-dvh
 How many times to repeat? 3
 ```
 
-Once the experiments are done, run this command to collect results. It will show the results in csv format.
+Once the experiments are done, run this command to collect results. It will show the results in csv format. Each column is one run (typically consists of 50 iterations). For example, the following results show there are two runs of netperf rr and netperf stream where each run consists of four iterations for a demo purpose.
 ```
 # ./results.py [test name]
 netperf-rr
@@ -219,6 +219,10 @@ netperf-stream
 9414.13,9414.27
 ------------------------
 ```
+
+Once the data is collected, get the average of each run and pick the best average number of all runs for each application benchmark. That's how we get application performance. [This template](https://docs.google.com/spreadsheets/d/1LwybiiGdiOgiuagrn9A3zcAKfsIzDAv9VSb0myU-3d8/edit?usp=sharing) would help to collect data.
+
+[Here are the results](https://docs.google.com/spreadsheets/d/1kJHflbqUu7mUiWMyHituv0whZJQagVIOqvtiBbd93kM/edit?usp=sharing) we have used for the paper.
 
 ## Instructions for Cloudlab
 
