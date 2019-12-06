@@ -181,7 +181,7 @@ Ready to run experiments!
 ```
 
 ## Running application benchmarks and collect results
-Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server and the client machines and save results in the client machine.
+Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server and the client machines. The result will be saved in the client machine under the directory you entered by "Enter test name:" prompt.
 ```
 # cd dvh-asplos-ae
 # cd scripts
