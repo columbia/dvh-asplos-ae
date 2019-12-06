@@ -34,7 +34,7 @@ Run this command to install packages used to compile software and run VMs. See [
 # ./install_packages.sh
 ```
 
-Lastly, copy the client machine ssh public key to `scripts/client_ssh_public` file. This enables the client machine to access any level of virtual machines, which is required for running application benchmarks. The copied client machine ssh public key as well as the server machine ssh public key are copied to each virtual machines on the first virtual machine run automatically.
+Lastly, copy the client machine ssh public key to `scripts/client_ssh_public` file **on the server machine**. This enables the client machine to access any level of virtual machines, which is required for running application benchmarks. The copied client machine ssh public key as well as that of the server machine are copied to virtual machines at each level on the first virtual machine run automatically.
 
 From the client,
 ```
