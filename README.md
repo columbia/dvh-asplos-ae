@@ -34,29 +34,33 @@ Run this command to install packages used to compile software and run VMs. See [
 # ./install_packages.sh
 ```
 
-## Physical / virtual machine setup
-Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments. Scripts in this repo uses those IP addresses. If you choose to use other IP addresses, please update scripts, too.
+Lastly, copy the client machine ssh public key to `scripts/client_ssh_public` file. This enables the client machine to access any level of virtual machines, which is required for running application benchmarks. The copied client machine ssh public key as well as the server machine ssh public key are copied to each virtual machines on the first virtual machine run automatically.
+
+From the client,
+```
+# cat ~/.ssh/id_rsa.pub
+ssh-rsa AABB...
+```
+From the server,
+```
+# echo 'ssh-rsa AABB...' > client_ssh_public
+```
+
+## Physical/virtual machine setup
+Prepare two physical machines and connect them through a private network. We use the following IP addresses in the experiments. Scripts in this repo use those IP addresses. If you choose to use other IP addresses, please update scripts, too.
 * A physical machine running virtual machines (i.e. server machine): 10.10.1.2
 * A physical machine sending workloads to the virtual machines (i.e. client machine): 10.10.1.1
 
-### Running a virtual machine
-Download the virtual machine image in the L0 machine. Then,run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. See [troubleshooting](#troubleshooting) for any problems.
-```
-# cd scripts
-# ./run-vm.py
---------- VM configurations -------
-1. [/sdb/v4.18.img] VM Image path
-2. [base] VM Configuration
-3. [2] Virtualization Level
-Enter number to update configuration. Enter 0 to start a VM:
-```
-
-Virtual machines are configured to have the following IP addresses already.
+In addition, configure virtual machines at each level use the following IP addresses on the server machine. If you are a cloudlab user, download a preconfigured VM image [here](#cloudlab-profiles)
 * L1: 10.10.1.100
 * L2: 10.10.1.101
 * L3: 10.10.1.102
 
-For convienient access from physical machines to virtual machines, the ssh public key in the L0 will be copied to virtual machines automatically when starting a VM. The client machine ssh public key, however, needs to be copied to `scripts/client_ssh_public` file first. Then it will be also copied to all virtual machines and L0 automatically when starting a VM.
+Once the physical machines and virtual machines are ready, follow those steps to run experiments.
+1. Prepare [Linux kernel](#kernel-setup) and [QEMU](#qemu-setup), and install them at each virtualization level and bare-metal machines. Do this only once for the client machine. See [software configuration tables](#software-configurations) to get the correct version to install.
+2. [Run a virtual machine](#running-a-virtual-machine) on the server machine.
+3. [Run application benchmarks and collect results](#run-application-benchmarks-and-collect-results) on the client machine
+4. Repeat 1 to 3 for all configurations in [here](#software-configurations)
 
 ## Kernel Setup
 Kernel setup involves compiling and installing kernel, updating kernel parameter, and **rebooting** the machine.
@@ -141,6 +145,7 @@ Pick a branch name from the [software configuration tables](#software-configurat
 ./configure --target-list=x86_64-softmmu && make clean && make -j
 ```
 
+
 ## Client Setup
 The client machine should have this repository in the home directory.
 ```
@@ -149,7 +154,20 @@ The client machine should have this repository in the home directory.
 
 The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup](#kernel-setup). 
 
-## Run application benchmarks and collect results
+## Running a virtual machine
+
+On the server machine, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. See [troubleshooting](#troubleshooting) for any problems.
+```
+# cd scripts
+# ./run-vm.py
+--------- VM configurations -------
+1. [/sdb/v4.18.img] VM Image path
+2. [base] VM Configuration
+3. [2] Virtualization Level
+Enter number to update configuration. Enter 0 to start a VM:
+```
+
+## Running application benchmarks and collect results
 Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server and the client machines and save results in the client machine.
 ```
 # cd dvh-asplos-ae
@@ -231,6 +249,12 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 * If `run-vm.py` script went wrong and if you can't type any command, enter ctrl+C. When the script went wrong, you are still in the execution of the script. Ctrl+C will take you back to the shell.
 
 ## Software configurations
+
+### Client machine
+|     |  Kernel branch                | Kernel param                      | QEMU branch|
+| --- | ---        | ---                               | ---  |
+| L0  | v4.18-base | -                         | -  |
+
 
 ### L0 experiments
 * Baseline
