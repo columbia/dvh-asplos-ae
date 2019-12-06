@@ -403,6 +403,21 @@ def update_params():
 
     return True 
 
+def consume_memory():
+    consume = get_boolean_input("Want to adjust the host machine memory size for the experiments? Please do it unless you did it already for the same VM configuration")
+    if consume:
+        size = 12
+        if params.level == 1:
+            size = 24
+        elif params.level == 2:
+            size = 36
+        elif params.level == 3:
+            size = 48
+
+        print 'Wait for a second...'
+        os.system('./consume_memory %d' % size)
+        print 'The host memory is set to %d succesfully'
+
 def set_params(reuse_force):
     global params
 
@@ -424,6 +439,7 @@ def set_params(reuse_force):
             new_params = Params()
 
         save_params(params)
+        consume_memory()
 
 
 def set_l1_addr():
