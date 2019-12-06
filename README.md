@@ -105,7 +105,7 @@ K_VER=4.18.0-base
 GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux $K_VER"
 ```
 
-Depending on I/O virtualization, update the line starting GRUB_CMDLINE_LINUX in `/etc/default/grub` file. By default, it would look like this
+You also need to update the line starting `GRUB_CMDLINE_LINUX` in `/etc/default/grub` file. By default, it would look like this
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"
 ```
@@ -133,7 +133,7 @@ Download QEMU source through git submodule command once.
 # git submodule update --init qemu
 ```
 
-Pick a branch name from the [software configuration tables](#software-configurations), and run this command to switch to the branch and to compile. 
+Pick a branch name from the [software configuration tables](#software-configurations), and run these commands to switch to the branch and to compile. 
 
 ```
 # cd qemu
