@@ -199,9 +199,11 @@ def boot_vms(bootLevel=0):
             child.expect('L' + str(vm_level) + '.*$')
 
         if bootLevel == vm_level:
-            consume_memory()
-            print ('Ready to run experiments!')
-            return
+            break
+
+    consume_memory()
+    print ('Ready to run experiments!')
+    return
 
 REMOVE = 0
 ADD = 1
