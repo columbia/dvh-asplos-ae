@@ -227,7 +227,7 @@ Once the data is collected, get the average of each run and pick the best averag
 ## Instructions for Cloudlab
 
 ### Joining Cloudlab
-Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to access machines. Join the existing project: KVM/ARM, and I will receive a notification automatically and I will let you in.
+Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to access machines. Join the existing project: KVMARM, and I will receive a notification automatically and I will let you in.
 
 ### Cloudlab profiles
 * Use `x86-u16-two` profile for experiments. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
