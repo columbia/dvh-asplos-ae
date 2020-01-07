@@ -14,7 +14,7 @@ On both the server and client machines, you need to do the [basic preparation](#
 
 On the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper QEMU version](#qemu-branches-for-running-vms) for each experiment configurations in all virtualization levels. Once it's ready, you can start [running a virtual machine](#running-a-virtual-machine). Note that in a provided virtual machine image, kernel and QEMU binaries are already available. You still need to update [kernel parameters](#kernel-parameter-setup) accordingly.
 
-On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or none for bare-metal measurements), [run application benchmarks and collect results](#run-application-benchmarks-and-collect-results). The script to run the application benchmarks will automatically install the benchmarks on both the server (including virtual machines) and the client if they are not yet installed.
+On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or none for bare-metal measurements), [run application benchmarks and collect results](#running-application-benchmarks-and-collect-results). The script to run the application benchmarks will automatically install the benchmarks on both the server (including virtual machines) and the client if they are not yet installed.
 
 ## Basic preparation
 Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
@@ -60,7 +60,7 @@ In addition, configure virtual machines at each level use the following IP addre
 Once the physical machines and virtual machines are ready, follow those steps to run experiments.
 1. Prepare [Linux kernel](#kernel-setup) and [QEMU](#qemu-setup), and install them at each virtualization level and bare-metal machines. Do this only once for the client machine. See [software configuration tables](#software-configurations) to get the correct version to install.
 2. [Run a virtual machine](#running-a-virtual-machine) on the server machine or [get the server ready](#running-a-physical-machine) for bare-metal measurements
-3. [Run application benchmarks and collect results](#run-application-benchmarks-and-collect-results) on the client machine
+3. [Run application benchmarks and collect results](#running-application-benchmarks-and-collect-results) on the client machine
 4. Repeat 1 to 3 for all configurations in [here](#software-configurations)
 
 ## Kernel Setup
