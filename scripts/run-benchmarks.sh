@@ -111,6 +111,7 @@ function run_tests()
 			if [[ $__i == 0 ]]; then
 				./mysql.sh run $TARGET_IP $TEST_USER $CMD_PATH 10 $mysql_option
 			else
+				ssh $TEST_USER@$TARGET_IP "sudo service ${SERVICES[$__i]} stop"
 				ssh $TEST_USER@$TARGET_IP "sudo service ${SERVICES[$__i]} start"
 				./$TEST.sh $TARGET_IP
 				ssh $TEST_USER@$TARGET_IP "sudo service ${SERVICES[$__i]} stop"
