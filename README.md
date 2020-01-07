@@ -170,7 +170,7 @@ On the server machine, run the `run-vm.py` script to set up the VM image path, v
 # cd scripts
 # ./run-vm.py
 --------- VM configurations -------
-1. [/sdb/v4.18.img] VM Image path
+1. [/vm/v4.18.img] VM Image path
 2. [base] VM Configuration
 3. [2] Virtualization Level
 Enter number to update configuration. Enter 0 to start a VM:
