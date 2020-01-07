@@ -341,7 +341,7 @@ def print_params():
 
     print("%d. [%s] Virtualization Level" % (LEVEL, params.level))
 
-    print("%d. [%s] Run for microbenchmarks?" % (MICRO, str(params.micro)))
+    #print("%d. [%s] Run for microbenchmarks?" % (MICRO, str(params.micro)))
 
 
     #print("%d. [%s] Migration" % (MIGRAION, str(params.mi)))
@@ -383,8 +383,8 @@ def update_params():
     if num == LEVEL:
         params.level = get_int_input("Input 1, 2, or 3: ")
 
-    if num == MICRO:
-        params.micro = get_boolean_input("y/n: ")
+    #if num == MICRO:
+    #    params.micro = get_boolean_input("y/n: ")
 
     if num == MIGRAION:
         params.mi = get_boolean_input("y/n: ")
