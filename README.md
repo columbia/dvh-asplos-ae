@@ -85,7 +85,7 @@ Pick a branch name from the [software configuration tables](#software-configurat
 ```
 
 ### Kernel compile
-Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. The compiled kernel will have a local version of this format by default: 4.18-`branch name`, e.g. 4.18-base.
+Run this script to compile and install kernel. Say Y for 'make modules_install' if this is the first time building a branch. Each branch needs their own modules. The compiled kernel will have a local version of this format by default: 4.18-`branch name`, e.g. 4.18-base.
 ```
 # build-n-install.sh
 LOCALVERSION?[base]:
