@@ -230,7 +230,7 @@ Once the data is collected, get the average of each run and pick the best averag
 Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to access machines. Join the existing project: KVMARM, and I will receive a notification automatically and I will let you in.
 
 ### Cloudlab profiles
-* Use `x86-u16-two` profile for experiments on **Wisconsin cluster**. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
+* Use the `x86-u16-two` profile for running experiments. To get enough storage for the VM image, do the following in the server node. **Note that you need more than 45G storage**, and the sda4 partition will suffice.
 ```
 # mkfs.ext4 /dev/sda4
 # mkdir /vm
@@ -244,7 +244,7 @@ Please sign up in cloud.us: https://www.cloudlab.us/signup.php to be able to acc
 # pbzip2 -dk ae-guest0.img.bz2
 ```
 
-* Use `tdataset` profile  on **Wisconsin cluster** for compiling code, especially Linux kernel. Copy the ssh public key of the node to a node that you are copying kernel to. To get enough storage for compiling kernel, do the following. 
+* Use the `tdataset` profile for compiling code, especially Linux kernel. Copy the ssh public key of the node to a node that you are copying kernel to. To get enough storage for compiling kernel, do the following. 
 ```
 # cd /tmp/env/scripts 
 # ./mkfs-wisc-sdc.sh
