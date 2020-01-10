@@ -58,10 +58,18 @@ In addition, configure virtual machines at each level use the following IP addre
 * L3: 10.10.1.102
 
 Once the physical machines and virtual machines are ready, follow those steps to run experiments.
-1. Prepare [Linux kernel](#kernel-setup) and [QEMU](#qemu-setup), and install them at each virtualization level and bare-metal machines. Do this only once for the client machine. See [software configuration tables](#software-configurations) to get the correct version to install.
-2. [Run a virtual machine](#running-a-virtual-machine) on the server machine or [get the server ready](#running-a-physical-machine) for bare-metal measurements
-3. [Run application benchmarks and collect results](#running-application-benchmarks-and-collect-results) on the client machine
-4. Repeat 1 to 3 for all configurations in [here](#software-configurations)
+1. Prepare custom [Linux kernel](#kernel-setup) and [QEMU](#qemu-setup) based on [the preparation instruction](#software-preparation-overview).
+2. [Run a virtual machine](#running-a-virtual-machine) on the server machine or [get the server ready](#running-a-physical-machine) for bare-metal measurements.
+3. [Run application benchmarks and collect results](#running-application-benchmarks-and-collect-results) on the client machine.
+4. [Terminate the virtual machine](#terminating-a-virtual-machine) on the server machine.
+4. Repeat 1 to 3 for all configurations in [here](#software-configurations).
+
+## Software Preparation Overview
+For the experiments, we need to install custom Linux kernel and QEMU. On the server, we need to install Linux kernel and QEMU on the server **and** in each virtual machine based on the experiment configuration. See [software configuration tables](#software-configurations) to get the correct version to install.
+
+On the client, we just need to install Linux kernel once. The kernel branch name is `v4.18-base`.
+
+The next sections explain how to compile and install Linux kernel and QEMU.
 
 ## Kernel Setup
 Kernel setup involves compiling and installing kernel, updating kernel parameter, and **rebooting** the machine.
