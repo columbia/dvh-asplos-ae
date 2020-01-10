@@ -156,7 +156,7 @@ The client machine should have this repository in the home directory.
 The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup](#kernel-setup). 
 
 ## Running a physical machine
-For L0 measurements, we don't run any virtual machines. Run this script instead to limit the memory size as discussed in the paper. For virtual machine tests, the script is already included in `run-vm.py`.
+For L0 measurements, we don't run any virtual machines. You only need to run this script **on the server** to limit the memory size as discussed in the paper. For virtual machine tests, the script is already included in `run-vm.py`.
 
 ```
 # cd scripts
@@ -165,7 +165,7 @@ For L0 measurements, we don't run any virtual machines. Run this script instead 
 
 ## Running a virtual machine
 
-On the server machine, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. Wait until you see `Ready to run experiments!` message. See [troubleshooting](#troubleshooting) for any problems.
+**On the server machine**, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. Wait until you see `Ready to run experiments!` message. See [troubleshooting](#troubleshooting) for any problems.
 ```
 # cd scripts
 # ./run-vm.py
@@ -181,7 +181,7 @@ Ready to run experiments!
 ```
 
 ## Running application benchmarks and collect results
-Run this command in the client. It will automatically install and run all the applications for the performance evaluation on the server and the client machines. The result will be saved in the client machine under the directory you entered by "Enter test name:" prompt.
+Run this command **on the client machine**. It will automatically install and run all the applications for the performance evaluation on the server and the client machines. The result will be saved in the client machine under the directory you entered by "Enter test name:" prompt.
 ```
 # cd dvh-asplos-ae
 # cd scripts
@@ -223,6 +223,18 @@ netperf-stream
 Once the data is collected, get the average of each run and pick the best average number of all runs for each application benchmark. That's how we get application performance. [This template](https://docs.google.com/spreadsheets/d/1LwybiiGdiOgiuagrn9A3zcAKfsIzDAv9VSb0myU-3d8/edit?usp=sharing) would help to collect data.
 
 [Here are the results](https://docs.google.com/spreadsheets/d/1kJHflbqUu7mUiWMyHituv0whZJQagVIOqvtiBbd93kM/edit?usp=sharing) we have used for the paper.
+
+## Terminating a virtual machine
+After the experiment, you need to terminate a (nested) virtual machine. Run `halt -p` command iteratively inside virtual machines  running **on the server** until you get the server shell. Run `exit` command to finally exit the `run-vm.py` script.
+```
+[Lx ~] # halt -p
+
+Broadcast message from root@guest0
+...
+
+[kvm-node ~] # exit
+[kvm-node ~] #
+```
 
 ## Instructions for Cloudlab
 
