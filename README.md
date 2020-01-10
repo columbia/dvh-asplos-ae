@@ -62,7 +62,7 @@ Once the physical machines and virtual machines are ready, follow those steps to
 2. [Run a virtual machine](#running-a-virtual-machine) on the server machine or [get the server ready](#running-a-physical-machine) for bare-metal measurements.
 3. [Run application benchmarks and collect results](#running-application-benchmarks-and-collect-results) on the client machine.
 4. [Terminate the virtual machine](#terminating-a-virtual-machine) on the server machine.
-5. Repeat 1 to 4 for all configurations in [here](#software-configurations).
+5. Repeat 1 to 4 for [all configurations](#server-machine).
 
 ## Software Preparation Overview
 For the experiments, we need to install custom Linux kernel and QEMU. On the server, we need to install Linux kernel and QEMU on the server **and** in each virtual machine based on the experiment configuration. See [software configuration tables](#software-configurations) to get the correct version to install.
@@ -292,23 +292,25 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | -                         | -  |
 
+### Server machine
+We have 11 different configurations from L0-0 to L3-4 as follows.
 
 ### L0 experiments
-* Baseline
+* [L0-1] Baseline
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=4                         | -  |
 
 ### L1 experiments
-* Baseline
+* [L1-1] Baseline
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=6                         | v3.1.0-base |
 | L1  | v4.18-base | -                                 | - |
 
-* Passthrough
+* [L1-2] Passthrough
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -317,7 +319,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 
 ### L2 experiments
-* Baseline
+* [L2-1] Baseline
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -325,7 +327,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | L1  | v4.18-base | -                                 | v3.1.0-base |
 | L2  | v4.18-base | -                                 | - |
 
-* Passthrough
+* [L2-2] Passthrough
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -333,7 +335,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
 | L2  | v4.18-base | -                                 | - |
 
-* DVH-VP
+* [L2-3] DVH-VP
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -341,7 +343,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
 | L2  | v4.18-base | -                                 | - |
 
-* DVH
+* [L2-4] DVH
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---                    | ---                               | ---  |
@@ -351,7 +353,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 
 ### L3 experiments
 
-* Baseline
+* [L3-1] Baseline
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -360,7 +362,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | L2  | v4.18-base | -                                 | v3.1.0-base |
 | L3  | v4.18-base | -                                 | - |
 
-* Passthrough
+* [L3-2] Passthrough
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -369,7 +371,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | L2  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
 | L3  | v4.18-base | -                                 | - |
 
-* DVH-VP
+* [L3-3] DVH-VP
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---        | ---                               | ---  |
@@ -378,7 +380,7 @@ GRUB_SERIAL_COMMAND="serial --unit=0 --port=0x3F8 --speed=115200"
 | L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
 | L2  | v4.18-base | -                                 | - |
 
-* DVH
+* [L3-4] DVH
 
 |     |  Kernel branch                | Kernel param                      | QEMU branch|
 | --- | ---                    | ---                               | ---  |
