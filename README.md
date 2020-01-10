@@ -164,7 +164,7 @@ The client machine should have this repository in the home directory.
 The client machine should have the baseline kernel, which is v4.18-base. Update as described in [Kernel Setup](#kernel-setup). 
 
 ## Running a physical machine
-For L0 measurements, we don't run any virtual machines. You only need to run this script **on the server** to limit the memory size as discussed in the paper. For virtual machine tests, the script is already included in `run-vm.py`.
+For the L0 measurement preparation, we don't [run any virtual machines](#running-a-virtual-machine). You only need to run this script **on the server** to limit the memory size as discussed in the paper. You are [ready to run the experiments](#running-application-benchmarks-and-collect-results).
 
 ```
 # cd scripts
@@ -173,7 +173,8 @@ For L0 measurements, we don't run any virtual machines. You only need to run thi
 
 ## Running a virtual machine
 
-**On the server machine**, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. Wait until you see `Ready to run experiments!` message. See [troubleshooting](#troubleshooting) for any problems.
+**On the server machine**, run the `run-vm.py` script to set up the VM image path, virtualization level and vitualization configuration such as baseline, passthrough, dvh-pv, or dvh. This script will run to the last level virtual machine automatically. When you see `Ready to run experiments!` message, you are [ready to run the experiments](#running-application-benchmarks-and-collect-results). See [troubleshooting](#troubleshooting) for any problems.
+
 ```
 # cd scripts
 # ./run-vm.py
