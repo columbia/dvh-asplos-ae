@@ -233,7 +233,7 @@ Once the data is collected, get the average of each run and pick the best averag
 [Here are the results](https://docs.google.com/spreadsheets/d/1kJHflbqUu7mUiWMyHituv0whZJQagVIOqvtiBbd93kM/edit?usp=sharing) we have used for the paper.
 
 ## Terminating a virtual machine
-After the experiment, you need to terminate a (nested) virtual machine. Run `halt -p` command iteratively inside virtual machines  running **on the server** until you get the server shell. Run `exit` command to finally exit the `run-vm.py` script.
+After the experiment, you need to terminate a (nested) virtual machine. Run `halt -p` command iteratively inside virtual machines  running **on the server** until you get the server shell. Run `exit` command once to finally exit the `run-vm.py` script.
 ```
 [Lx ~] # halt -p
 
