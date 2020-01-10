@@ -12,7 +12,7 @@ We compare application performance on bare-metal to that on virtual machines at 
 
 On both the server and client machines, you need to do the [basic preparation](#basic-preparation) for running various scripts and compiling source code.
 
-On the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper QEMU version](#qemu-branches-for-running-vms) for each experiment configurations in all virtualization levels. Once it's ready, you can start [running a virtual machine](#running-a-virtual-machine). Note that in a provided virtual machine image, kernel and QEMU binaries are already available. You still need to update [kernel parameters](#kernel-parameter-setup) accordingly.
+On the server, you need to install [a proper kernel version](#branch-information), update [kernel parameters](#kernel-parameter-setup), and use [a proper QEMU version](#qemu-branches-for-running-vms) for each experiment configurations in all virtualization levels. Once it's ready, you can start [running a virtual machine](#running-a-virtual-machine).
 
 On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or none for bare-metal measurements), [run application benchmarks and collect results](#running-application-benchmarks-and-collect-results). The script to run the application benchmarks will automatically install the benchmarks on both the server (including virtual machines) and the client if they are not yet installed.
 
