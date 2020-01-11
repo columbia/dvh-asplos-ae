@@ -65,7 +65,9 @@ Once the physical machines and virtual machines are ready, follow those steps to
 5. Repeat 1 to 4 for [all configurations](#server-machine).
 
 ## Software Preparation Overview
-For the experiments, we need to install custom Linux kernel and QEMU. On the server, we need to install Linux kernel and QEMU on the server **and** in each virtual machine based on the experiment configuration. See [software configuration tables](#software-configurations) to get the correct version to install.
+For the experiments, we need to install custom Linux kernel and QEMU. On the server, we need to install Linux kernel and QEMU on the server **and in each virtual machine** based on the experiment configuration. See [software configuration tables](#software-configurations) to get the correct version to install.
+
+When setting software for a virtual machine, you first need to boot the virtual machine to configure and do the following steps as you do in the server. For example, when you configure a L1 VM for one of the [L2 experiments](#l2-experiments), [boot the L1 VM first](#running-a-virtual-machine), copy/configure kernel, build QEMU, and terminate the L1 VM to make the changes effective. Then you are ready to run the L2 experiments.
 
 On the client, we just need to install Linux kernel once. The kernel branch name is `v4.18-base`.
 
