@@ -17,7 +17,7 @@ On the server, you need to install [a proper kernel version](#branch-information
 On the client, you need to install [baseline kernel](#branch-information) without further updating kernel parameters and QEMU. Once the server is running a virtual machine (or none for bare-metal measurements), [run application benchmarks and collect results](#running-application-benchmarks-and-collect-results). The script to run the application benchmarks will automatically install the benchmarks on both the server (including virtual machines) and the client if they are not yet installed.
 
 ## Basic preparation
-Clone this repository on both machines as a **root** user. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
+Clone this repository on both machines as a **root** user in **the home directory**. Note that all the commands other than this `git clone` command need to be executed in the directory this repo is cloned.
 ```
 # git clone https://github.com/columbia/dvh-asplos-ae.git
 # cd dvh-asplos-ae
@@ -148,7 +148,7 @@ Download QEMU source through git submodule command once.
 # git submodule update --init qemu
 ```
 
-Pick a branch name from the [software configuration tables](#software-configurations), and run these commands to switch to the branch and to compile. 
+Pick a branch name from the [software configuration tables](#software-configurations), and run these commands to switch to the branch and to compile. Note that the script that runs virtual machines, `run-vm.py`, will use the compiled QEMU binary automatically **assuming that you cloned this repository under the home directory of root account**.
 
 ```
 # cd qemu
