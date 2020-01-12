@@ -380,8 +380,8 @@ We have 11 different configurations from L0-0 to L3-4 as follows.
 | --- | ---        | ---                               | ---  |
 | L0  | v4.18-base | maxcpus=10 <br> kvm-intel.nested=1 <br> | v3.1.0-base |
 | L1  | v4.18-base | intel_iommu=on <br> kvm-intel.nested=1 | v3.1.0-base |
-| L1  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
-| L2  | v4.18-base | -                                 | - |
+| L2  | v4.18-base | intel_iommu=on                    | v3.1.0-base |
+| L3  | v4.18-base | -                                 | - |
 
 * [L3-4] DVH
 
@@ -389,5 +389,5 @@ We have 11 different configurations from L0-0 to L3-4 as follows.
 | --- | ---                    | ---                               | ---  |
 | L0  | v4.18-dvh-L0-asplos    | maxcpus=10 <br> kvm-intel.nested=1 <br> | v3.1.0-dvh |
 | L1  | v4.18-dvh-full-asplos | intel_iommu=on <br> kvm-intel.nested=1  | v3.1.0-dvh |
-| L1  | v4.18-dvh-basic-asplos | intel_iommu=on                    | v3.1.0-base |
-| L2  | v4.18-base | -                                             | - |
+| L2  | v4.18-dvh-basic-asplos | intel_iommu=on                    | v3.1.0-base |
+| L3  | v4.18-base | -                                             | - |
